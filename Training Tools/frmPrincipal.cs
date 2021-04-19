@@ -47,7 +47,7 @@ namespace Training_Tools
         }
         private void frmPrincipal_MouseMove(object sender, MouseEventArgs e)
         {
-            moveMouse(e.X,e.Y);
+            moveMouse(e.X, e.Y);
             if (pbX != 0 && pbY != 0 && lbText == lb.Text)
             {
                 lb.BackColor = Color.Blue;
@@ -84,7 +84,7 @@ namespace Training_Tools
                     minute++;
                 }
 
-                if(microsecond < 10)
+                if (microsecond < 10)
                 {
                     ceroMicroSec = "0";
                 }
@@ -133,9 +133,8 @@ namespace Training_Tools
         bool move = false;
         int pbX = 0;
         int pbY = 0;
-        int x = 0;
-        int Y = 0;
         string lbText = "";
+        int lbDeleteX = 28;
         Label lb = new Label();
         private void pb_mouseDown(object sender, MouseEventArgs e)
         {
@@ -144,13 +143,12 @@ namespace Training_Tools
             pbX = lb.Location.X;
             pbY = lb.Location.Y;
             lbText = lb.Text;
-            x = e.X;
-            Y = e.Y;
         }
 
         List<string> listItems = new List<string>();
         int ActionY = 5;
         int heightAction = 50;
+        Font fontDelete = new Font("Time New Roman", 18, FontStyle.Bold);
         private void pb_mouseUp(object sender, MouseEventArgs e)
         {
             move = false;
@@ -160,12 +158,12 @@ namespace Training_Tools
             {
                 try
                 {
-                    MessageBox.Show(pnExcerciseAction.Controls[0].Controls[0].Text);
+                    //MessageBox.Show(pnExcerciseAction.Controls[0].Controls[0].Text);
                 }
                 catch
                 {
 
-                    
+
                 }
                 if (listItems.Count == 0)
                 {
@@ -182,6 +180,19 @@ namespace Training_Tools
                     label.Text = lb.Text;
                     pb.Controls.Add(label);
 
+                    //label for Delete
+                    Label lbdelete = new Label();
+                    lbdelete.Text = "X";
+                    lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
+                    lbdelete.Font = fontDelete;
+
+                    Label lbID = new Label();
+                    lbID.Text = "0";
+                    lbdelete.Controls.Add(lbID);
+                    pnExcerciseAction.Controls.Add(lbdelete);
+                    lbID.Visible = false;
+                    lbdelete.Click += lbDelete_Click;
+
                     pnExcerciseAction.Controls.Add(pb);
                     pb.BringToFront();
                     pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
@@ -194,9 +205,9 @@ namespace Training_Tools
                         list.Add(lst);
                     }
                     listItems.Add(lb.Text);
-                    for(int ii=0; ii < listItems.Count; ii++)
+                    for (int ii = 0; ii < listItems.Count; ii++)
                     {
-                        if(ii+1 > list.Count)
+                        if (ii + 1 > list.Count && ii < 10)
                         {
                             PictureBox pb = new PictureBox();
                             pb.Location = new Point(pnExcerciseAction.Location.X + 15, ActionY);
@@ -208,13 +219,27 @@ namespace Training_Tools
                             label.Text = lb.Text;
                             pb.Controls.Add(label);
 
+                            //label for Delete
+                            Label lbdelete = new Label();
+                            lbdelete.Text = "X";
+                            lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
+                            lbdelete.Font = fontDelete;
+
+                            Label lbID = new Label();
+                            lbID.Text = (ii).ToString();
+                            lbdelete.Controls.Add(lbID);
+                            pnExcerciseAction.Controls.Add(lbdelete);
+                            lbID.Visible = false;
+
+                            lbdelete.Click += lbDelete_Click;
+
                             pnExcerciseAction.Controls.Add(pb);
                             pb.BringToFront();
                             pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
                         }
-                        ActionY += heightAction+5;
+                        ActionY += heightAction + 5;
                     }
-                    if(ActionY > pnExcerciseAction.Height)
+                    if (ActionY > pnExcerciseAction.Height)
                     {
                         pnExcerciseAction.AutoScroll = true;
                     }
@@ -226,12 +251,67 @@ namespace Training_Tools
                 }
             }
         }
+
+        private void lbDelete_Click(object sender, EventArgs e)
+        {
+            Label close = (Label)sender;
+            int indexdelete = int.Parse(close.Controls[0].Text);
+            //MessageBox.Show(listItems[indexdelete]);
+            if (listItems.Count == 1)
+                listItems.Clear();
+            else
+                listItems.RemoveAt(indexdelete);
+            pnExcerciseAction.Controls.Clear();
+            for (int ii = 0; ii < listItems.Count; ii++)
+            {
+                PictureBox pb = new PictureBox();
+                pb.Location = new Point(pnExcerciseAction.Location.X + 15, ActionY);
+                pb.Width = pnExcerciseAction.Width - 50;
+                pb.Height = heightAction;
+                pb.BackColor = Color.White;
+
+                Label label = new Label();
+                label.Text = listItems[ii];
+                pb.Controls.Add(label);
+
+                //label for Delete
+                Label lbdelete = new Label();
+                lbdelete.Text = "X";
+                lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
+                lbdelete.Font = fontDelete;
+
+                Label lbID = new Label();
+                lbID.Text = (ii).ToString();
+                lbdelete.Controls.Add(lbID);
+                pnExcerciseAction.Controls.Add(lbdelete);
+                lbID.Visible = false;
+
+                lbdelete.Click += lbDelete_Click;
+
+                pnExcerciseAction.Controls.Add(pb);
+                pb.BringToFront();
+                pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                ActionY += heightAction + 5;
+            }
+            if (ActionY > pnExcerciseAction.Height)
+            {
+                pnExcerciseAction.AutoScroll = true;
+            }
+            else
+            {
+                pnExcerciseAction.AutoScroll = false;
+            }
+            ActionY = 5;
+            /* pnExcerciseAction.Controls.Remove(close);
+             pnExcerciseAction.Controls.RemoveAt(indexdelete);*/
+        }
+
         private void pb_mouseMove(object sender, MouseEventArgs e)
         {
-            moveMouse(e.X,e.Y);
+            moveMouse(e.X, e.Y);
             Label lb = (Label)sender;
             lb.BringToFront();
-            if (move && e.X != -1 && e.Y != -1 && lbText==lb.Text)
+            if (move && e.X != -1 && e.Y != -1 && lbText == lb.Text)
             {
                 //pnExcercise.Controls.Remove(lb);
                 lb.BackColor = Color.Black;
@@ -239,7 +319,7 @@ namespace Training_Tools
             }
             else
             {
-                if(pbX != 0 && pbY != 0 && lbText == lb.Text)
+                if (pbX != 0 && pbY != 0 && lbText == lb.Text)
                 {
                     lb.BackColor = Color.Blue;
                     lb.Location = new Point(pbX, pbY);
