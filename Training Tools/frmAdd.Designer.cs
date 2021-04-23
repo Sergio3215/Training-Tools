@@ -37,6 +37,7 @@ namespace Training_Tools
             // 
             // textBox1
             // 
+            this.textBox1.AccessibleName = "";
             this.textBox1.Location = new System.Drawing.Point(65, 50);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(243, 20);
