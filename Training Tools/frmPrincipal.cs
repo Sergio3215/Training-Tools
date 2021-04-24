@@ -37,7 +37,22 @@ namespace Training_Tools
                 second = 0;
                 minute = 0;
                 lbTimePrincipal.Text = "00 : 00 : 00";
+
+                Restart();
+
+                for (int jj = 0; jj < pnExcerciseAction.Controls.Count; jj++)
+                {
+                    pnExcerciseAction.Controls[jj].BackColor = Color.Transparent;
+                }
             }
+        }
+
+        public void Restart()
+        {
+            timeCounter = 0;
+            firstTime = !firstTime;
+            minCounter = 0;
+            secCounter = 0;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -60,6 +75,10 @@ namespace Training_Tools
         int microsecond = 0;
         int second = 0;
         int minute = 0;
+        int timeCounter = 0;
+        bool firstTime = true;
+        int minCounter = 0;
+        int secCounter = 0;
         private void timerPrincipal_Tick(object sender, EventArgs e)
         {
             if (play)
@@ -101,6 +120,53 @@ namespace Training_Tools
 
                 btnPlay.Text = "Stop";
                 btnRestart.Enabled = false;
+
+                if (timeCounter < pnExcerciseAction.Controls.Count)
+                {
+                    if (pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[1].Text == "")
+                        pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[1].Text = "0";
+
+                    if (pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[2].Text == "")
+                        pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[2].Text = "0";
+
+                    pnExcerciseAction.Controls[timeCounter].BackColor = Color.LightSalmon;
+
+                    if (firstTime)
+                    {
+                        minCounter += int.Parse(pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[1].Text);
+                        secCounter += int.Parse(pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[2].Text);
+                        firstTime = !firstTime;
+                    }
+
+                    if(secCounter == 59)
+                    {
+                        secCounter = 0;
+                        minCounter++;
+                    }
+
+                    if (minCounter <= minute && secCounter <= second)
+                    {
+                        pnExcerciseAction.Controls[timeCounter].BackColor = Color.LightGreen;
+                        timeCounter++;
+                        firstTime = !firstTime;
+                    }
+                }
+                else
+                {
+                    play = !play;
+                    Restart();
+                    /*microsecond = 0;
+                    second = 0;
+                    minute = 0;
+                    lbTimePrincipal.Text = "00 : 00 : 00";
+
+                    for (int jj = 0; jj<pnExcerciseAction.Controls.Count;jj++)
+                    {
+                        pnExcerciseAction.Controls[jj].BackColor = Color.Transparent;
+                    }*/
+
+                }
+
             }
             else
             {
@@ -381,7 +447,7 @@ namespace Training_Tools
             List<string> min = new List<string>();
             List<string> sec = new List<string>();
 
-            for(int kk = 0; kk < pnExcerciseAction.Controls.Count; kk++)
+            for (int kk = 0; kk < pnExcerciseAction.Controls.Count; kk++)
             {
                 min.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[1].Text);
                 sec.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[2].Text);
@@ -397,7 +463,7 @@ namespace Training_Tools
                 sec.Clear();
             else
                 sec.RemoveAt(indexdelete);
-            
+
 
             if (listItems.Count == 1)
                 listItems.Clear();
