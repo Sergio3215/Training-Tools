@@ -115,7 +115,7 @@ namespace Training_Tools
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(97, 33);
             this.btnRestart.TabIndex = 2;
-            this.btnRestart.Text = "Restart";
+            this.btnRestart.Text = "Reiniciar";
             this.btnRestart.UseVisualStyleBackColor = true;
             this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
             this.btnRestart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);

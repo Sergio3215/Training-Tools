@@ -43,6 +43,8 @@ namespace Training_Tools
                 for (int jj = 0; jj < pnExcerciseAction.Controls.Count; jj++)
                 {
                     pnExcerciseAction.Controls[jj].BackColor = Color.Transparent;
+                    pnExcerciseAction.Controls[jj].Controls[0].Controls[1].Enabled = true;
+                    pnExcerciseAction.Controls[jj].Controls[0].Controls[2].Enabled = true;
                 }
             }
         }
@@ -133,12 +135,17 @@ namespace Training_Tools
 
                     if (firstTime)
                     {
+                        for (int jj = 0; jj < pnExcerciseAction.Controls.Count; jj++)
+                        {
+                            pnExcerciseAction.Controls[jj].Controls[0].Controls[1].Enabled = false;
+                            pnExcerciseAction.Controls[jj].Controls[0].Controls[2].Enabled = false;
+                        }
                         minCounter += int.Parse(pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[1].Text);
                         secCounter += int.Parse(pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[2].Text);
                         firstTime = !firstTime;
                     }
 
-                    if(secCounter == 59)
+                    if (secCounter == 59)
                     {
                         secCounter = 0;
                         minCounter++;
@@ -222,163 +229,170 @@ namespace Training_Tools
             if (lb.Location.X > pnExcerciseAction.Location.X && lb.Location.X < pnExcerciseAction.Location.X + pnExcerciseAction.Width &&
                 lb.Location.Y > pnExcerciseAction.Location.Y && lb.Location.Y < pnExcerciseAction.Location.Y + pnExcerciseAction.Height)
             {
-                try
+                if (lbTimePrincipal.Text == "00 : 00 : 00")
                 {
-                    //MessageBox.Show(pnExcerciseAction.Controls[0].Controls[0].Text);
-                }
-                catch
-                {
-
-
-                }
-                if (listItems.Count == 0)
-                {
-                    listItems.Add(lb.Text);
-
-                    //MessageBox.Show(listItems[0]);
-
-                    Panel pn = new Panel();
-                    pn.Width = pnExcerciseAction.Width - 20;
-                    pn.Height = heightAction + 10;
-                    pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
-                    pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-                    //pn.BackColor = Color.Red;
-
-                    PictureBox pb = new PictureBox();
-                    pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
-                    pb.Width = pnExcerciseAction.Width - 50;
-                    pb.Height = heightAction;
-                    pb.BackColor = Color.White;
-
-                    Label label = new Label();
-                    label.Text = lb.Text;
-                    label.BackColor = Color.Transparent;
-                    pb.Controls.Add(label);
-
-                    //label for Delete
-                    Label lbdelete = new Label();
-                    lbdelete.Text = "X";
-                    lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
-                    lbdelete.Font = fontDelete;
-
-                    Label lbID = new Label();
-                    lbID.Text = "0";
-                    lbdelete.Controls.Add(lbID);
-                    pn.Controls.Add(lbdelete);
-                    lbID.Visible = false;
-                    lbdelete.Click += lbDelete_Click;
-
-                    TextBox txtMinute = new TextBox();
-                    txtMinute.Width = 50;
-                    txtMinute.Location = new Point(pb.Width - 200, 15);
-                    txtMinute.Anchor = (AnchorStyles.Right);
-
-                    TextBox txtSecond = new TextBox();
-                    txtSecond.Width = 50;
-                    txtSecond.Location = new Point(pb.Width - 130, 15);
-                    txtSecond.Anchor = (AnchorStyles.Right);
-
-                    Label lbTimeTex = new Label();
-                    lbTimeTex.Text = ":";
-                    lbTimeTex.Location = new Point(pb.Width - 145, 15);
-                    lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
-                    lbTimeTex.Anchor = (AnchorStyles.Right);
-
-                    txtMinute.KeyPress += txtBox_KeyPress;
-                    txtSecond.KeyPress += txtBox_KeyPress;
-
-                    pb.Controls.Add(txtMinute);
-                    pb.Controls.Add(txtSecond);
-                    pb.Controls.Add(lbTimeTex);
-
-                    pn.Controls.Add(pb);
-                    pnExcerciseAction.Controls.Add(pn);
-                    pb.BringToFront();
-                    pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-                }
-                else
-                {
-                    List<string> list = new List<string>();
-                    foreach (var lst in listItems)
+                    try
                     {
-                        list.Add(lst);
+                        //MessageBox.Show(pnExcerciseAction.Controls[0].Controls[0].Text);
                     }
-                    listItems.Add(lb.Text);
-                    for (int ii = 0; ii < listItems.Count; ii++)
+                    catch
                     {
-                        if (ii + 1 > list.Count && ii < 10)
-                        {
 
-                            PictureBox pb = new PictureBox();
-                            pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
-                            pb.Width = pnExcerciseAction.Width - 50;
-                            pb.Height = heightAction;
-                            pb.BackColor = Color.White;
 
-                            Panel pn = new Panel();
-                            pn.Width = pnExcerciseAction.Width - 20;
-                            pn.Height = heightAction + 10;
-                            pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
-                            pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-                            //pn.BackColor = Color.Red;
-
-                            Label label = new Label();
-                            label.Text = lb.Text;
-                            label.BackColor = Color.Transparent;
-                            pb.Controls.Add(label);
-
-                            //label for Delete
-                            Label lbdelete = new Label();
-                            lbdelete.Text = "X";
-                            lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
-                            lbdelete.Font = fontDelete;
-
-                            Label lbID = new Label();
-                            lbID.Text = (ii).ToString();
-                            lbdelete.Controls.Add(lbID);
-                            pn.Controls.Add(lbdelete);
-                            lbID.Visible = false;
-                            lbdelete.Click += lbDelete_Click;
-
-                            TextBox txtMinute = new TextBox();
-                            txtMinute.Width = 50;
-                            txtMinute.Location = new Point(pb.Width - 200, 15);
-                            txtMinute.Anchor = (AnchorStyles.Right);
-
-                            TextBox txtSecond = new TextBox();
-                            txtSecond.Width = 50;
-                            txtSecond.Location = new Point(pb.Width - 130, 15);
-                            txtSecond.Anchor = (AnchorStyles.Right);
-
-                            Label lbTimeTex = new Label();
-                            lbTimeTex.Text = ":";
-                            lbTimeTex.Location = new Point(pb.Width - 145, 15);
-                            lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
-                            lbTimeTex.Anchor = (AnchorStyles.Right);
-
-                            txtMinute.KeyPress += txtBox_KeyPress;
-                            txtSecond.KeyPress += txtBox_KeyPress;
-
-                            pb.Controls.Add(txtMinute);
-                            pb.Controls.Add(txtSecond);
-                            pb.Controls.Add(lbTimeTex);
-
-                            pn.Controls.Add(pb);
-                            pnExcerciseAction.Controls.Add(pn);
-                            pb.BringToFront();
-                            pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-                        }
-                        ActionY += heightAction + 5;
                     }
-                    if (ActionY > pnExcerciseAction.Height)
+                    if (listItems.Count == 0)
                     {
-                        pnExcerciseAction.AutoScroll = true;
+                        listItems.Add(lb.Text);
+
+                        //MessageBox.Show(listItems[0]);
+
+                        Panel pn = new Panel();
+                        pn.Width = pnExcerciseAction.Width - 20;
+                        pn.Height = heightAction + 10;
+                        pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
+                        pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                        //pn.BackColor = Color.Red;
+
+                        PictureBox pb = new PictureBox();
+                        pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
+                        pb.Width = pnExcerciseAction.Width - 50;
+                        pb.Height = heightAction;
+                        pb.BackColor = Color.White;
+
+                        Label label = new Label();
+                        label.Text = lb.Text;
+                        label.BackColor = Color.Transparent;
+                        pb.Controls.Add(label);
+
+                        //label for Delete
+                        Label lbdelete = new Label();
+                        lbdelete.Text = "X";
+                        lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
+                        lbdelete.Font = fontDelete;
+
+                        Label lbID = new Label();
+                        lbID.Text = "0";
+                        lbdelete.Controls.Add(lbID);
+                        pn.Controls.Add(lbdelete);
+                        lbID.Visible = false;
+                        lbdelete.Click += lbDelete_Click;
+
+                        TextBox txtMinute = new TextBox();
+                        txtMinute.Width = 50;
+                        txtMinute.Location = new Point(pb.Width - 200, 15);
+                        txtMinute.Anchor = (AnchorStyles.Right);
+
+                        TextBox txtSecond = new TextBox();
+                        txtSecond.Width = 50;
+                        txtSecond.Location = new Point(pb.Width - 130, 15);
+                        txtSecond.Anchor = (AnchorStyles.Right);
+
+                        Label lbTimeTex = new Label();
+                        lbTimeTex.Text = ":";
+                        lbTimeTex.Location = new Point(pb.Width - 145, 15);
+                        lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
+                        lbTimeTex.Anchor = (AnchorStyles.Right);
+
+                        txtMinute.KeyPress += txtBox_KeyPress;
+                        txtSecond.KeyPress += txtBox_KeyPress;
+
+                        pb.Controls.Add(txtMinute);
+                        pb.Controls.Add(txtSecond);
+                        pb.Controls.Add(lbTimeTex);
+
+                        pn.Controls.Add(pb);
+                        pnExcerciseAction.Controls.Add(pn);
+                        pb.BringToFront();
+                        pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
                     }
                     else
                     {
-                        pnExcerciseAction.AutoScroll = false;
+                        List<string> list = new List<string>();
+                        foreach (var lst in listItems)
+                        {
+                            list.Add(lst);
+                        }
+                        listItems.Add(lb.Text);
+                        for (int ii = 0; ii < listItems.Count; ii++)
+                        {
+                            if (ii + 1 > list.Count && ii < 10)
+                            {
+
+                                PictureBox pb = new PictureBox();
+                                pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
+                                pb.Width = pnExcerciseAction.Width - 50;
+                                pb.Height = heightAction;
+                                pb.BackColor = Color.White;
+
+                                Panel pn = new Panel();
+                                pn.Width = pnExcerciseAction.Width - 20;
+                                pn.Height = heightAction + 10;
+                                pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
+                                pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                                //pn.BackColor = Color.Red;
+
+                                Label label = new Label();
+                                label.Text = lb.Text;
+                                label.BackColor = Color.Transparent;
+                                pb.Controls.Add(label);
+
+                                //label for Delete
+                                Label lbdelete = new Label();
+                                lbdelete.Text = "X";
+                                lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
+                                lbdelete.Font = fontDelete;
+
+                                Label lbID = new Label();
+                                lbID.Text = (ii).ToString();
+                                lbdelete.Controls.Add(lbID);
+                                pn.Controls.Add(lbdelete);
+                                lbID.Visible = false;
+                                lbdelete.Click += lbDelete_Click;
+
+                                TextBox txtMinute = new TextBox();
+                                txtMinute.Width = 50;
+                                txtMinute.Location = new Point(pb.Width - 200, 15);
+                                txtMinute.Anchor = (AnchorStyles.Right);
+
+                                TextBox txtSecond = new TextBox();
+                                txtSecond.Width = 50;
+                                txtSecond.Location = new Point(pb.Width - 130, 15);
+                                txtSecond.Anchor = (AnchorStyles.Right);
+
+                                Label lbTimeTex = new Label();
+                                lbTimeTex.Text = ":";
+                                lbTimeTex.Location = new Point(pb.Width - 145, 15);
+                                lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
+                                lbTimeTex.Anchor = (AnchorStyles.Right);
+
+                                txtMinute.KeyPress += txtBox_KeyPress;
+                                txtSecond.KeyPress += txtBox_KeyPress;
+
+                                pb.Controls.Add(txtMinute);
+                                pb.Controls.Add(txtSecond);
+                                pb.Controls.Add(lbTimeTex);
+
+                                pn.Controls.Add(pb);
+                                pnExcerciseAction.Controls.Add(pn);
+                                pb.BringToFront();
+                                pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                            }
+                            ActionY += heightAction + 5;
+                        }
+                        if (ActionY > pnExcerciseAction.Height)
+                        {
+                            pnExcerciseAction.AutoScroll = true;
+                        }
+                        else
+                        {
+                            pnExcerciseAction.AutoScroll = false;
+                        }
+                        ActionY = 5;
                     }
-                    ActionY = 5;
+                }
+                else
+                {
+                    MessageBox.Show("En este momento no puede añadirse ningun ejercicio mas.\nPulse el boton reiniciar para añadir mas.");
                 }
             }
         }
@@ -433,115 +447,122 @@ namespace Training_Tools
 
         private void lbDelete_Click(object sender, EventArgs e)
         {
-            Label close = (Label)sender;
-            int indexdelete = int.Parse(close.Controls[0].Text);
-            //First controls is created by code, 2nd control is the picture box and 3rd  controls is label
-            //MessageBox.Show(pnExcerciseAction.Controls[indexdelete].Controls[0].Controls[0].Text);
-            /*
-             * get id number = pnExcerciseAction.Controls[indexdelete].Controls[1].Controls[0].Text
-             * 
-             * Text Box min = pnExcerciseAction.Controls[indexdelete].Controls[0].Controls[1].Text
-             * Text Box Sec = pnExcerciseAction.Controls[indexdelete].Controls[0].Controls[2].Text
-             */
-
-            List<string> min = new List<string>();
-            List<string> sec = new List<string>();
-
-            for (int kk = 0; kk < pnExcerciseAction.Controls.Count; kk++)
+            if (lbTimePrincipal.Text == "00 : 00 : 00")
             {
-                min.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[1].Text);
-                sec.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[2].Text);
+                Label close = (Label)sender;
+                int indexdelete = int.Parse(close.Controls[0].Text);
+                //First controls is created by code, 2nd control is the picture box and 3rd  controls is label
+                //MessageBox.Show(pnExcerciseAction.Controls[indexdelete].Controls[0].Controls[0].Text);
+                /*
+                 * get id number = pnExcerciseAction.Controls[indexdelete].Controls[1].Controls[0].Text
+                 * 
+                 * Text Box min = pnExcerciseAction.Controls[indexdelete].Controls[0].Controls[1].Text
+                 * Text Box Sec = pnExcerciseAction.Controls[indexdelete].Controls[0].Controls[2].Text
+                 */
+
+                List<string> min = new List<string>();
+                List<string> sec = new List<string>();
+
+                for (int kk = 0; kk < pnExcerciseAction.Controls.Count; kk++)
+                {
+                    min.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[1].Text);
+                    sec.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[2].Text);
+                }
+
+                if (min.Count == 1)
+                    min.Clear();
+                else
+                    min.RemoveAt(indexdelete);
+
+
+                if (sec.Count == 1)
+                    sec.Clear();
+                else
+                    sec.RemoveAt(indexdelete);
+
+
+                if (listItems.Count == 1)
+                    listItems.Clear();
+                else
+                    listItems.RemoveAt(indexdelete);
+                pnExcerciseAction.Controls.Clear();
+                for (int ii = 0; ii < listItems.Count; ii++)
+                {
+                    Panel pn = new Panel();
+                    pn.Width = pnExcerciseAction.Width - 20;
+                    pn.Height = heightAction + 10;
+                    pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
+                    pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+
+                    PictureBox pb = new PictureBox();
+                    pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
+                    pb.Width = pnExcerciseAction.Width - 50;
+                    pb.Height = heightAction;
+                    pb.BackColor = Color.White;
+
+                    Label label = new Label();
+                    label.Text = listItems[ii];
+                    label.BackColor = Color.Transparent;
+                    pb.Controls.Add(label);
+
+                    //label for Delete
+                    Label lbdelete = new Label();
+                    lbdelete.Text = "X";
+                    lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
+                    lbdelete.Font = fontDelete;
+
+                    Label lbID = new Label();
+                    lbID.Text = (ii).ToString();
+                    lbdelete.Controls.Add(lbID);
+                    pn.Controls.Add(lbdelete);
+                    lbID.Visible = false;
+                    lbdelete.Click += lbDelete_Click;
+
+                    TextBox txtMinute = new TextBox();
+                    txtMinute.Width = 50;
+                    txtMinute.Location = new Point(pb.Width - 200, 15);
+                    txtMinute.Text = min[ii];
+                    txtMinute.Anchor = (AnchorStyles.Right);
+
+                    TextBox txtSecond = new TextBox();
+                    txtSecond.Width = 50;
+                    txtSecond.Location = new Point(pb.Width - 130, 15);
+                    txtSecond.Text = sec[ii];
+                    txtSecond.Anchor = (AnchorStyles.Right);
+
+                    Label lbTimeTex = new Label();
+                    lbTimeTex.Text = ":";
+                    lbTimeTex.Location = new Point(pb.Width - 145, 15);
+                    lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
+                    lbTimeTex.Anchor = (AnchorStyles.Right);
+
+                    txtMinute.KeyPress += txtBox_KeyPress;
+                    txtSecond.KeyPress += txtBox_KeyPress;
+
+                    pb.Controls.Add(txtMinute);
+                    pb.Controls.Add(txtSecond);
+                    pb.Controls.Add(lbTimeTex);
+
+                    pn.Controls.Add(pb);
+                    pnExcerciseAction.Controls.Add(pn);
+                    pb.BringToFront();
+                    pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                    ActionY += heightAction + 5;
+                }
+                if (ActionY > pnExcerciseAction.Height)
+                {
+                    pnExcerciseAction.AutoScroll = true;
+                }
+                else
+                {
+                    pnExcerciseAction.AutoScroll = false;
+                }
+                ActionY = 5;
             }
-
-            if (min.Count == 1)
-                min.Clear();
             else
-                min.RemoveAt(indexdelete);
-
-
-            if (sec.Count == 1)
-                sec.Clear();
-            else
-                sec.RemoveAt(indexdelete);
-
-
-            if (listItems.Count == 1)
-                listItems.Clear();
-            else
-                listItems.RemoveAt(indexdelete);
-            pnExcerciseAction.Controls.Clear();
-            for (int ii = 0; ii < listItems.Count; ii++)
             {
-                Panel pn = new Panel();
-                pn.Width = pnExcerciseAction.Width - 20;
-                pn.Height = heightAction + 10;
-                pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
-                pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-
-                PictureBox pb = new PictureBox();
-                pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
-                pb.Width = pnExcerciseAction.Width - 50;
-                pb.Height = heightAction;
-                pb.BackColor = Color.White;
-
-                Label label = new Label();
-                label.Text = listItems[ii];
-                label.BackColor = Color.Transparent;
-                pb.Controls.Add(label);
-
-                //label for Delete
-                Label lbdelete = new Label();
-                lbdelete.Text = "X";
-                lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
-                lbdelete.Font = fontDelete;
-
-                Label lbID = new Label();
-                lbID.Text = (ii).ToString();
-                lbdelete.Controls.Add(lbID);
-                pn.Controls.Add(lbdelete);
-                lbID.Visible = false;
-                lbdelete.Click += lbDelete_Click;
-
-                TextBox txtMinute = new TextBox();
-                txtMinute.Width = 50;
-                txtMinute.Location = new Point(pb.Width - 200, 15);
-                txtMinute.Text = min[ii];
-                txtMinute.Anchor = (AnchorStyles.Right);
-
-                TextBox txtSecond = new TextBox();
-                txtSecond.Width = 50;
-                txtSecond.Location = new Point(pb.Width - 130, 15);
-                txtSecond.Text = sec[ii];
-                txtSecond.Anchor = (AnchorStyles.Right);
-
-                Label lbTimeTex = new Label();
-                lbTimeTex.Text = ":";
-                lbTimeTex.Location = new Point(pb.Width - 145, 15);
-                lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
-                lbTimeTex.Anchor = (AnchorStyles.Right);
-
-                txtMinute.KeyPress += txtBox_KeyPress;
-                txtSecond.KeyPress += txtBox_KeyPress;
-
-                pb.Controls.Add(txtMinute);
-                pb.Controls.Add(txtSecond);
-                pb.Controls.Add(lbTimeTex);
-
-                pn.Controls.Add(pb);
-                pnExcerciseAction.Controls.Add(pn);
-                pb.BringToFront();
-                pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-                ActionY += heightAction + 5;
+                MessageBox.Show("No se puede borrar el ejercicio seleccionado porque esta corriendo el cronometro.\nPara eliminarlo pulse stop y reiniciar.");
             }
-            if (ActionY > pnExcerciseAction.Height)
-            {
-                pnExcerciseAction.AutoScroll = true;
-            }
-            else
-            {
-                pnExcerciseAction.AutoScroll = false;
-            }
-            ActionY = 5;
             /* pnExcerciseAction.Controls.Remove(close);
              pnExcerciseAction.Controls.RemoveAt(indexdelete);*/
         }
