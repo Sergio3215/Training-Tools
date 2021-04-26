@@ -42,6 +42,10 @@ namespace Training_Tools
             this.lbMouseX = new System.Windows.Forms.Label();
             this.lbMouseY = new System.Windows.Forms.Label();
             this.pbExcercise = new System.Windows.Forms.PictureBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).BeginInit();
             this.SuspendLayout();
             // 
@@ -52,26 +56,24 @@ namespace Training_Tools
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnExcerciseAction.AutoScroll = true;
             this.pnExcerciseAction.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.pnExcerciseAction.Location = new System.Drawing.Point(12, 82);
+            this.pnExcerciseAction.Location = new System.Drawing.Point(12, 111);
             this.pnExcerciseAction.Name = "pnExcerciseAction";
-            this.pnExcerciseAction.Size = new System.Drawing.Size(737, 522);
+            this.pnExcerciseAction.Size = new System.Drawing.Size(737, 493);
             this.pnExcerciseAction.TabIndex = 0;
             this.pnExcerciseAction.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
             // lstExcercise
             // 
             this.lstExcercise.FormattingEnabled = true;
-            this.lstExcercise.Items.AddRange(new object[] {
-            "Descanso",
-            "Fuerza de brazos"});
-            this.lstExcercise.Location = new System.Drawing.Point(497, 82);
+            this.lstExcercise.Location = new System.Drawing.Point(498, 147);
             this.lstExcercise.Name = "lstExcercise";
-            this.lstExcercise.Size = new System.Drawing.Size(252, 511);
+            this.lstExcercise.Size = new System.Drawing.Size(240, 446);
             this.lstExcercise.TabIndex = 0;
             this.lstExcercise.Visible = false;
             // 
             // btnAdd
             // 
+            this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(755, 34);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(232, 42);
@@ -94,6 +96,7 @@ namespace Training_Tools
             // 
             // btnPlay
             // 
+            this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnPlay.Location = new System.Drawing.Point(528, 34);
             this.btnPlay.Name = "btnPlay";
             this.btnPlay.Size = new System.Drawing.Size(97, 33);
@@ -111,6 +114,7 @@ namespace Training_Tools
             // 
             // btnRestart
             // 
+            this.btnRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRestart.Location = new System.Drawing.Point(631, 34);
             this.btnRestart.Name = "btnRestart";
             this.btnRestart.Size = new System.Drawing.Size(97, 33);
@@ -169,18 +173,63 @@ namespace Training_Tools
             this.pbExcercise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pbExcercise.BackColor = System.Drawing.Color.White;
-            this.pbExcercise.Location = new System.Drawing.Point(755, 82);
+            this.pbExcercise.Location = new System.Drawing.Point(755, 111);
             this.pbExcercise.Name = "pbExcercise";
-            this.pbExcercise.Size = new System.Drawing.Size(232, 522);
+            this.pbExcercise.Size = new System.Drawing.Size(232, 493);
             this.pbExcercise.TabIndex = 7;
             this.pbExcercise.TabStop = false;
             this.pbExcercise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(535, 84);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(61, 18);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "Minutos";
+            // 
+            // label4
+            // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(602, 84);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(75, 18);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Segundos";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(13, 82);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(51, 20);
+            this.label5.TabIndex = 10;
+            this.label5.Text = "Ciclos";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(70, 80);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(35, 24);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 616);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.pnExcerciseAction);
             this.Controls.Add(this.pbExcercise);
             this.Controls.Add(this.lbMouseY);
@@ -215,6 +264,10 @@ namespace Training_Tools
         private System.Windows.Forms.Label lbMouseX;
         private System.Windows.Forms.Label lbMouseY;
         private System.Windows.Forms.PictureBox pbExcercise;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

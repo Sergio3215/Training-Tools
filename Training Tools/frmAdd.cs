@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,6 +16,24 @@ namespace Training_Tools
         public frmAdd()
         {
             InitializeComponent();
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            StreamReader sr = new StreamReader("item");
+            string list = sr.ReadLine();
+            sr.Close();
+
+            StreamWriter sw = new StreamWriter("item");
+            sw.WriteLine(list+txtName.Text+";");
+            sw.Close();
+            frmPrincipal.addNew = true;
+            this.Close();
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

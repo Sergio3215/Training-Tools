@@ -29,19 +29,19 @@ namespace Training_Tools
         /// </summary>
         private void InitializeComponent()
         {
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.lbName = new System.Windows.Forms.Label();
             this.btnSave = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // textBox1
+            // txtName
             // 
-            this.textBox1.AccessibleName = "";
-            this.textBox1.Location = new System.Drawing.Point(65, 50);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(243, 20);
-            this.textBox1.TabIndex = 0;
+            this.txtName.AccessibleName = "";
+            this.txtName.Location = new System.Drawing.Point(65, 50);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(243, 20);
+            this.txtName.TabIndex = 0;
             // 
             // lbName
             // 
@@ -60,6 +60,7 @@ namespace Training_Tools
             this.btnSave.TabIndex = 2;
             this.btnSave.Text = "Guardar";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -69,6 +70,7 @@ namespace Training_Tools
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "Cancelar";
             this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // frmAdd
             // 
@@ -78,7 +80,7 @@ namespace Training_Tools
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.lbName);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtName);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmAdd";
@@ -91,7 +93,7 @@ namespace Training_Tools
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label lbName;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Button btnCancel;

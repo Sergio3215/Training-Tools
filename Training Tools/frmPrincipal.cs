@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -81,8 +82,29 @@ namespace Training_Tools
         bool firstTime = true;
         int minCounter = 0;
         int secCounter = 0;
+        public static bool addNew = false;
         private void timerPrincipal_Tick(object sender, EventArgs e)
         {
+            if (addNew)
+            {
+                for(int oo = 0; oo < this.Controls.Count; oo++)
+                {
+                    if(this.Controls[oo].Text != "")
+                    {
+                        this.Controls.RemoveAt(oo);
+                        oo--;
+                    }
+                    else
+                    {
+                        break;
+                    }
+                }
+
+                lstExcercise.Items.Clear();
+
+                CreateNewItems();
+                addNew = !addNew;
+            }
             if (play)
             {
                 string ceroMicroSec = "";
@@ -184,6 +206,26 @@ namespace Training_Tools
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            CreateNewItems();
+        }
+
+        public void CreateNewItems()
+        {
+            StreamReader sr = new StreamReader("item");
+            string list = sr.ReadLine();
+            sr.Close();
+
+            if (list != null)
+            {
+                string[] listCut = list.Split(';');
+
+                for (int ll = 0; ll < listCut.Length; ll++)
+                {
+                    if (listCut[ll] != "")
+                        lstExcercise.Items.Add(listCut[ll]);
+                }
+            }
+
             int height = 15;
             for (int ii = 0; ii < lstExcercise.Items.Count; ii++)
             {
@@ -202,7 +244,10 @@ namespace Training_Tools
                 lb.BringToFront();
                 height += 35;
             }
+
+            //var control = this.Controls;
         }
+
         bool move = false;
         int pbX = 0;
         int pbY = 0;
