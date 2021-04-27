@@ -45,7 +45,7 @@ namespace Training_Tools
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtCycle = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).BeginInit();
             this.SuspendLayout();
             // 
@@ -212,21 +212,21 @@ namespace Training_Tools
             this.label5.TabIndex = 10;
             this.label5.Text = "Ciclos";
             // 
-            // textBox1
+            // txtCycle
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(70, 80);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(35, 24);
-            this.textBox1.TabIndex = 11;
-            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
+            this.txtCycle.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCycle.Location = new System.Drawing.Point(70, 80);
+            this.txtCycle.Name = "txtCycle";
+            this.txtCycle.Size = new System.Drawing.Size(35, 24);
+            this.txtCycle.TabIndex = 11;
+            this.txtCycle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 616);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtCycle);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -267,7 +267,7 @@ namespace Training_Tools
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtCycle;
     }
 }
 

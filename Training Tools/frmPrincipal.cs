@@ -32,6 +32,19 @@ namespace Training_Tools
         }
         private void btnRestart_Click(object sender, EventArgs e)
         {
+            RestartCycle();
+        }
+
+        public void Restart()
+        {
+            timeCounter = 0;
+            firstTime = !firstTime;
+            minCounter = 0;
+            secCounter = 0;
+        }
+
+        public void RestartCycle()
+        {
             if (!play)
             {
                 microsecond = 0;
@@ -48,14 +61,6 @@ namespace Training_Tools
                     pnExcerciseAction.Controls[jj].Controls[0].Controls[2].Enabled = true;
                 }
             }
-        }
-
-        public void Restart()
-        {
-            timeCounter = 0;
-            firstTime = !firstTime;
-            minCounter = 0;
-            secCounter = 0;
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -82,6 +87,7 @@ namespace Training_Tools
         bool firstTime = true;
         int minCounter = 0;
         int secCounter = 0;
+        int counterCycle = 1;
         public static bool addNew = false;
         private void timerPrincipal_Tick(object sender, EventArgs e)
         {
@@ -167,9 +173,9 @@ namespace Training_Tools
                         firstTime = !firstTime;
                     }
 
-                    if (secCounter == 59)
+                    if (secCounter >= 60)
                     {
-                        secCounter = 0;
+                        secCounter = secCounter - 60;
                         minCounter++;
                     }
 
@@ -182,8 +188,24 @@ namespace Training_Tools
                 }
                 else
                 {
+                    counterCycle++;
+                    if (txtCycle.Text == "" || txtCycle.Text == "0")
+                        txtCycle.Text = "1";
+
+
                     play = !play;
-                    Restart();
+
+                    if (counterCycle <= int.Parse(txtCycle.Text))
+                    {
+                        RestartCycle();
+                        play = !play;
+                        firstTime = !firstTime;
+                    }
+                    else
+                    {
+                        Restart();
+                        counterCycle = 1;
+                    }
                     /*microsecond = 0;
                     second = 0;
                     minute = 0;
@@ -206,6 +228,11 @@ namespace Training_Tools
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            if (!File.Exists("Item"))
+            {
+                File.Create("Item");
+            }
+
             CreateNewItems();
         }
 
