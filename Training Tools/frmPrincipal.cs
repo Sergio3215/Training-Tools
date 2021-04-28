@@ -317,65 +317,7 @@ namespace Training_Tools
                         listItems.Add(lb.Text);
 
                         //MessageBox.Show(listItems[0]);
-
-                        Panel pn = new Panel();
-                        pn.Width = pnExcerciseAction.Width - 20;
-                        pn.Height = heightAction + 10;
-                        pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
-                        pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-                        //pn.BackColor = Color.Red;
-
-                        PictureBox pb = new PictureBox();
-                        pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
-                        pb.Width = pnExcerciseAction.Width - 50;
-                        pb.Height = heightAction;
-                        pb.BackColor = Color.White;
-
-                        Label label = new Label();
-                        label.Text = lb.Text;
-                        label.BackColor = Color.Transparent;
-                        pb.Controls.Add(label);
-
-                        //label for Delete
-                        Label lbdelete = new Label();
-                        lbdelete.Text = "X";
-                        lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
-                        lbdelete.Font = fontDelete;
-
-                        Label lbID = new Label();
-                        lbID.Text = "0";
-                        lbdelete.Controls.Add(lbID);
-                        pn.Controls.Add(lbdelete);
-                        lbID.Visible = false;
-                        lbdelete.Click += lbDelete_Click;
-
-                        TextBox txtMinute = new TextBox();
-                        txtMinute.Width = 50;
-                        txtMinute.Location = new Point(pb.Width - 200, 15);
-                        txtMinute.Anchor = (AnchorStyles.Right);
-
-                        TextBox txtSecond = new TextBox();
-                        txtSecond.Width = 50;
-                        txtSecond.Location = new Point(pb.Width - 130, 15);
-                        txtSecond.Anchor = (AnchorStyles.Right);
-
-                        Label lbTimeTex = new Label();
-                        lbTimeTex.Text = ":";
-                        lbTimeTex.Location = new Point(pb.Width - 145, 15);
-                        lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
-                        lbTimeTex.Anchor = (AnchorStyles.Right);
-
-                        txtMinute.KeyPress += txtBox_KeyPress;
-                        txtSecond.KeyPress += txtBox_KeyPress;
-
-                        pb.Controls.Add(txtMinute);
-                        pb.Controls.Add(txtSecond);
-                        pb.Controls.Add(lbTimeTex);
-
-                        pn.Controls.Add(pb);
-                        pnExcerciseAction.Controls.Add(pn);
-                        pb.BringToFront();
-                        pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                        CreateComponentExcercise(0, "", "");
                     }
                     else
                     {
@@ -389,65 +331,7 @@ namespace Training_Tools
                         {
                             if (ii + 1 > list.Count && ii < 10)
                             {
-
-                                PictureBox pb = new PictureBox();
-                                pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
-                                pb.Width = pnExcerciseAction.Width - 50;
-                                pb.Height = heightAction;
-                                pb.BackColor = Color.White;
-
-                                Panel pn = new Panel();
-                                pn.Width = pnExcerciseAction.Width - 20;
-                                pn.Height = heightAction + 10;
-                                pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
-                                pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-                                //pn.BackColor = Color.Red;
-
-                                Label label = new Label();
-                                label.Text = lb.Text;
-                                label.BackColor = Color.Transparent;
-                                pb.Controls.Add(label);
-
-                                //label for Delete
-                                Label lbdelete = new Label();
-                                lbdelete.Text = "X";
-                                lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
-                                lbdelete.Font = fontDelete;
-
-                                Label lbID = new Label();
-                                lbID.Text = (ii).ToString();
-                                lbdelete.Controls.Add(lbID);
-                                pn.Controls.Add(lbdelete);
-                                lbID.Visible = false;
-                                lbdelete.Click += lbDelete_Click;
-
-                                TextBox txtMinute = new TextBox();
-                                txtMinute.Width = 50;
-                                txtMinute.Location = new Point(pb.Width - 200, 15);
-                                txtMinute.Anchor = (AnchorStyles.Right);
-
-                                TextBox txtSecond = new TextBox();
-                                txtSecond.Width = 50;
-                                txtSecond.Location = new Point(pb.Width - 130, 15);
-                                txtSecond.Anchor = (AnchorStyles.Right);
-
-                                Label lbTimeTex = new Label();
-                                lbTimeTex.Text = ":";
-                                lbTimeTex.Location = new Point(pb.Width - 145, 15);
-                                lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
-                                lbTimeTex.Anchor = (AnchorStyles.Right);
-
-                                txtMinute.KeyPress += txtBox_KeyPress;
-                                txtSecond.KeyPress += txtBox_KeyPress;
-
-                                pb.Controls.Add(txtMinute);
-                                pb.Controls.Add(txtSecond);
-                                pb.Controls.Add(lbTimeTex);
-
-                                pn.Controls.Add(pb);
-                                pnExcerciseAction.Controls.Add(pn);
-                                pb.BringToFront();
-                                pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                                CreateComponentExcercise(ii, "", "");
                             }
                             ActionY += heightAction + 5;
                         }
@@ -467,6 +351,70 @@ namespace Training_Tools
                     MessageBox.Show("En este momento no puede añadirse ningun ejercicio mas.\nPulse el boton reiniciar para añadir mas.");
                 }
             }
+        }
+
+        public void CreateComponentExcercise(int counter, string min, string sec)
+        {
+
+            Panel pn = new Panel();
+            pn.Width = pnExcerciseAction.Width - 20;
+            pn.Height = heightAction + 10;
+            pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
+            pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+
+            PictureBox pb = new PictureBox();
+            pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
+            pb.Width = pnExcerciseAction.Width - 50;
+            pb.Height = heightAction;
+            pb.BackColor = Color.White;
+
+            Label label = new Label();
+            label.Text = listItems[counter];
+            label.BackColor = Color.Transparent;
+            pb.Controls.Add(label);
+
+            //label for Delete
+            Label lbdelete = new Label();
+            lbdelete.Text = "X";
+            lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
+            lbdelete.Font = fontDelete;
+
+            Label lbID = new Label();
+            lbID.Text = (counter).ToString();
+            lbdelete.Controls.Add(lbID);
+            pn.Controls.Add(lbdelete);
+            lbID.Visible = false;
+            lbdelete.Click += lbDelete_Click;
+
+            TextBox txtMinute = new TextBox();
+            txtMinute.Width = 50;
+            txtMinute.Location = new Point(pb.Width - 200, 15);
+            txtMinute.Text = min;
+            txtMinute.Anchor = (AnchorStyles.Right);
+
+            TextBox txtSecond = new TextBox();
+            txtSecond.Width = 50;
+            txtSecond.Location = new Point(pb.Width - 130, 15);
+            txtSecond.Text = sec;
+            txtSecond.Anchor = (AnchorStyles.Right);
+
+            Label lbTimeTex = new Label();
+            lbTimeTex.Text = ":";
+            lbTimeTex.Location = new Point(pb.Width - 145, 15);
+            lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
+            lbTimeTex.Anchor = (AnchorStyles.Right);
+
+            txtMinute.KeyPress += txtBox_KeyPress;
+            txtSecond.KeyPress += txtBox_KeyPress;
+
+            pb.Controls.Add(txtMinute);
+            pb.Controls.Add(txtSecond);
+            pb.Controls.Add(lbTimeTex);
+
+            pn.Controls.Add(pb);
+            pnExcerciseAction.Controls.Add(pn);
+            pb.BringToFront();
+            pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
         }
 
         private void txtBox_KeyPress(object sender, KeyPressEventArgs e)
@@ -560,65 +508,7 @@ namespace Training_Tools
                 pnExcerciseAction.Controls.Clear();
                 for (int ii = 0; ii < listItems.Count; ii++)
                 {
-                    Panel pn = new Panel();
-                    pn.Width = pnExcerciseAction.Width - 20;
-                    pn.Height = heightAction + 10;
-                    pn.Location = new Point(pnExcerciseAction.Location.X + 1, ActionY - 2);
-                    pn.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
-
-                    PictureBox pb = new PictureBox();
-                    pb.Location = new Point(pnExcerciseAction.Location.X + 15, 6);
-                    pb.Width = pnExcerciseAction.Width - 50;
-                    pb.Height = heightAction;
-                    pb.BackColor = Color.White;
-
-                    Label label = new Label();
-                    label.Text = listItems[ii];
-                    label.BackColor = Color.Transparent;
-                    pb.Controls.Add(label);
-
-                    //label for Delete
-                    Label lbdelete = new Label();
-                    lbdelete.Text = "X";
-                    lbdelete.Location = new Point(pb.Location.X - lbDeleteX, pb.Location.Y + 15);
-                    lbdelete.Font = fontDelete;
-
-                    Label lbID = new Label();
-                    lbID.Text = (ii).ToString();
-                    lbdelete.Controls.Add(lbID);
-                    pn.Controls.Add(lbdelete);
-                    lbID.Visible = false;
-                    lbdelete.Click += lbDelete_Click;
-
-                    TextBox txtMinute = new TextBox();
-                    txtMinute.Width = 50;
-                    txtMinute.Location = new Point(pb.Width - 200, 15);
-                    txtMinute.Text = min[ii];
-                    txtMinute.Anchor = (AnchorStyles.Right);
-
-                    TextBox txtSecond = new TextBox();
-                    txtSecond.Width = 50;
-                    txtSecond.Location = new Point(pb.Width - 130, 15);
-                    txtSecond.Text = sec[ii];
-                    txtSecond.Anchor = (AnchorStyles.Right);
-
-                    Label lbTimeTex = new Label();
-                    lbTimeTex.Text = ":";
-                    lbTimeTex.Location = new Point(pb.Width - 145, 15);
-                    lbTimeTex.Font = new Font("Arial", 12, FontStyle.Bold);
-                    lbTimeTex.Anchor = (AnchorStyles.Right);
-
-                    txtMinute.KeyPress += txtBox_KeyPress;
-                    txtSecond.KeyPress += txtBox_KeyPress;
-
-                    pb.Controls.Add(txtMinute);
-                    pb.Controls.Add(txtSecond);
-                    pb.Controls.Add(lbTimeTex);
-
-                    pn.Controls.Add(pb);
-                    pnExcerciseAction.Controls.Add(pn);
-                    pb.BringToFront();
-                    pb.Anchor = (AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+                    CreateComponentExcercise(ii, min[ii], sec[ii]);
                     ActionY += heightAction + 5;
                 }
                 if (ActionY > pnExcerciseAction.Height)
