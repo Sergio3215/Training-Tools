@@ -111,6 +111,16 @@ namespace Training_Tools
                 CreateNewItems();
                 addNew = !addNew;
             }
+
+            if(pnExcerciseAction.Controls.Count == 0)
+            {
+                btnPlay.Enabled = false;
+            }
+            else
+            {
+                btnPlay.Enabled = true;
+            }
+
             if (play)
             {
                 string ceroMicroSec = "";
