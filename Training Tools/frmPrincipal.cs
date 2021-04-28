@@ -93,9 +93,9 @@ namespace Training_Tools
         {
             if (addNew)
             {
-                for(int oo = 0; oo < this.Controls.Count; oo++)
+                for (int oo = 0; oo < this.Controls.Count; oo++)
                 {
-                    if(this.Controls[oo].Text != "")
+                    if (this.Controls[oo].Text != "")
                     {
                         this.Controls.RemoveAt(oo);
                         oo--;
@@ -288,6 +288,7 @@ namespace Training_Tools
             pbX = lb.Location.X;
             pbY = lb.Location.Y;
             lbText = lb.Text;
+            pbTrash.Visible = true;
         }
 
         List<string> listItems = new List<string>();
@@ -297,6 +298,7 @@ namespace Training_Tools
         private void pb_mouseUp(object sender, MouseEventArgs e)
         {
             move = false;
+            pbTrash.Visible = false;
             Label lb = (Label)sender;
             if (lb.Location.X > pnExcerciseAction.Location.X && lb.Location.X < pnExcerciseAction.Location.X + pnExcerciseAction.Width &&
                 lb.Location.Y > pnExcerciseAction.Location.Y && lb.Location.Y < pnExcerciseAction.Location.Y + pnExcerciseAction.Height)
@@ -349,6 +351,44 @@ namespace Training_Tools
                 else
                 {
                     MessageBox.Show("En este momento no puede añadirse ningun ejercicio mas.\nPulse el boton reiniciar para añadir mas.");
+                }
+            }
+            else if (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X ||
+                    lb.Location.X + lb.Width > pbTrash.Location.X && lb.Location.X + lb.Width < pbTrash.Width + pbTrash.Location.X
+                    && lb.Location.Y > pbTrash.Location.Y && lb.Location.Y < pbTrash.Height + pbTrash.Location.Y ||
+                    lb.Location.Y + lb.Height > pbTrash.Location.Y && lb.Location.Y + lb.Height < pbTrash.Height + pbTrash.Location.Y)
+            {
+                if (lbTimePrincipal.Text == "00 : 00 : 00")
+                {
+                    pbTrash.Image = Properties.Resources.trash;
+                    StreamWriter sw = new StreamWriter("item");
+                    sw.WriteLine("");
+                    sw.Close();
+                    for (int pp = 0; pp < lstExcercise.Items.Count; pp++)
+                    {
+                        if (lb.Text == lstExcercise.Items[pp].ToString())
+                        {
+                            lstExcercise.Items.RemoveAt(pp);
+                            pp--;
+                        }
+                        else
+                        {
+                            StreamReader sr = new StreamReader("item");
+                            string list = sr.ReadLine();
+                            sr.Close();
+
+                            StreamWriter sw1 = new StreamWriter("item");
+                            sw1.WriteLine(list + lstExcercise.Items[pp].ToString() + ";");
+                            sw1.Close();
+                        }
+                    }
+                    addNew = true;
+                }
+                else
+                {
+                    lb.Width = 100;
+                    lb.Height = 30;
+                    MessageBox.Show("No se puede borrar cuando esta ejecutandose el temporizador");
                 }
             }
         }
@@ -539,6 +579,22 @@ namespace Training_Tools
                 //pnExcercise.Controls.Remove(lb);
                 lb.BackColor = Color.Black;
                 lb.Location = new Point(MousePosition.X - this.Location.X - 40, MousePosition.Y - this.Location.Y - 50);
+
+                if (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X ||
+                    lb.Location.X + lb.Width > pbTrash.Location.X && lb.Location.X + lb.Width < pbTrash.Width + pbTrash.Location.X
+                    && lb.Location.Y > pbTrash.Location.Y && lb.Location.Y < pbTrash.Height + pbTrash.Location.Y ||
+                    lb.Location.Y + lb.Height > pbTrash.Location.Y && lb.Location.Y + lb.Height < pbTrash.Height + pbTrash.Location.Y)
+                {
+                    pbTrash.Image = Properties.Resources.trashSelected;
+                    lb.Width = 55;
+                    lb.Height = 20;
+                }
+                else
+                {
+                    pbTrash.Image = Properties.Resources.trash;
+                    lb.Width = 100;
+                    lb.Height = 30;
+                }
             }
             else
             {
@@ -552,6 +608,5 @@ namespace Training_Tools
                 pbY = 0;
             }
         }
-
     }
 }

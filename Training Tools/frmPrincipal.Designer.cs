@@ -46,7 +46,9 @@ namespace Training_Tools
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCycle = new System.Windows.Forms.TextBox();
+            this.pbTrash = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).BeginInit();
             this.SuspendLayout();
             // 
             // pnExcerciseAction
@@ -73,6 +75,7 @@ namespace Training_Tools
             // 
             // btnAdd
             // 
+            this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.Location = new System.Drawing.Point(755, 34);
             this.btnAdd.Name = "btnAdd";
@@ -221,11 +224,23 @@ namespace Training_Tools
             this.txtCycle.TabIndex = 11;
             this.txtCycle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
+            // pbTrash
+            // 
+            this.pbTrash.Image = global::Training_Tools.Properties.Resources.trash;
+            this.pbTrash.Location = new System.Drawing.Point(758, 79);
+            this.pbTrash.Name = "pbTrash";
+            this.pbTrash.Size = new System.Drawing.Size(33, 29);
+            this.pbTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbTrash.TabIndex = 12;
+            this.pbTrash.TabStop = false;
+            this.pbTrash.Visible = false;
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 616);
+            this.Controls.Add(this.pbTrash);
             this.Controls.Add(this.txtCycle);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -246,6 +261,7 @@ namespace Training_Tools
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -268,6 +284,7 @@ namespace Training_Tools
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCycle;
+        private System.Windows.Forms.PictureBox pbTrash;
     }
 }
 
