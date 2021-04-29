@@ -28,12 +28,25 @@ namespace Training_Tools
             sw.WriteLine(list+txtName.Text+";");
             sw.Close();
             frmPrincipal.addNew = true;
+            frmPrincipal.enableForm = true;
             this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
+            frmPrincipal.enableForm = true;
             this.Close();
+        }
+
+        private void frmAdd_Load(object sender, EventArgs e)
+        {
+            frmPrincipal.ActiveForm.Enabled = false;
+            this.Location = new Point(this.Width+frmPrincipal.ActiveForm.Location.X, this.Height + frmPrincipal.ActiveForm.Location.Y);
+        }
+
+        private void frmAdd_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            frmPrincipal.enableForm = true;
         }
     }
 }

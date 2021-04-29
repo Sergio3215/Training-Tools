@@ -47,8 +47,12 @@ namespace Training_Tools
             this.label5 = new System.Windows.Forms.Label();
             this.txtCycle = new System.Windows.Forms.TextBox();
             this.pbTrash = new System.Windows.Forms.PictureBox();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.herramientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.formatoYTamañoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).BeginInit();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnExcerciseAction
@@ -131,44 +135,48 @@ namespace Training_Tools
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(12, 40);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(27, 25);
             this.label1.TabIndex = 3;
             this.label1.Text = "X:";
+            this.label1.Visible = false;
             this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(78, 9);
+            this.label2.Location = new System.Drawing.Point(78, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 25);
             this.label2.TabIndex = 4;
             this.label2.Text = "Y:";
+            this.label2.Visible = false;
             this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
             // lbMouseX
             // 
             this.lbMouseX.AutoSize = true;
             this.lbMouseX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMouseX.Location = new System.Drawing.Point(45, 15);
+            this.lbMouseX.Location = new System.Drawing.Point(45, 46);
             this.lbMouseX.Name = "lbMouseX";
             this.lbMouseX.Size = new System.Drawing.Size(15, 17);
             this.lbMouseX.TabIndex = 5;
             this.lbMouseX.Text = "0";
+            this.lbMouseX.Visible = false;
             this.lbMouseX.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
             // lbMouseY
             // 
             this.lbMouseY.AutoSize = true;
             this.lbMouseY.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMouseY.Location = new System.Drawing.Point(111, 15);
+            this.lbMouseY.Location = new System.Drawing.Point(111, 46);
             this.lbMouseY.Name = "lbMouseY";
             this.lbMouseY.Size = new System.Drawing.Size(15, 17);
             this.lbMouseY.TabIndex = 6;
             this.lbMouseY.Text = "0";
+            this.lbMouseY.Visible = false;
             this.lbMouseY.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
             // pbExcercise
@@ -235,6 +243,31 @@ namespace Training_Tools
             this.pbTrash.TabStop = false;
             this.pbTrash.Visible = false;
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.herramientaToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(999, 24);
+            this.menuStrip1.TabIndex = 13;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // herramientaToolStripMenuItem
+            // 
+            this.herramientaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.formatoYTamañoToolStripMenuItem});
+            this.herramientaToolStripMenuItem.Name = "herramientaToolStripMenuItem";
+            this.herramientaToolStripMenuItem.Size = new System.Drawing.Size(85, 20);
+            this.herramientaToolStripMenuItem.Text = "Herramienta";
+            // 
+            // formatoYTamañoToolStripMenuItem
+            // 
+            this.formatoYTamañoToolStripMenuItem.Name = "formatoYTamañoToolStripMenuItem";
+            this.formatoYTamañoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.formatoYTamañoToolStripMenuItem.Text = "Fuentes y tamaños";
+            this.formatoYTamañoToolStripMenuItem.Click += new System.EventHandler(this.formatoYTamañoToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -256,12 +289,16 @@ namespace Training_Tools
             this.Controls.Add(this.lbTimePrincipal);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.lstExcercise);
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
             this.Name = "frmPrincipal";
             this.Text = "Training Tool";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).EndInit();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +322,9 @@ namespace Training_Tools
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtCycle;
         private System.Windows.Forms.PictureBox pbTrash;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem herramientaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem formatoYTamañoToolStripMenuItem;
     }
 }
 

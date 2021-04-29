@@ -89,8 +89,32 @@ namespace Training_Tools
         int secCounter = 0;
         int counterCycle = 1;
         public static bool addNew = false;
+        public static bool enableForm = false;
+        public static bool changeFont = false;
         private void timerPrincipal_Tick(object sender, EventArgs e)
         {
+            if (enableForm)
+            {
+                this.Enabled = true;
+                enableForm = !enableForm;
+                this.BringToFront();
+                if (changeFont && pnExcerciseAction.Controls.Count != 0)
+                {
+                    StreamReader sr = new StreamReader("Font");
+                    string font = sr.ReadLine();
+                    sr.Close();
+                    string[] cutFont = font.Split(';');
+
+                    for (int tt = 0; tt < pnExcerciseAction.Controls.Count; tt++)
+                    {
+                        pnExcerciseAction.Controls[tt].Controls[0].Controls[0].Font = new Font(cutFont[0], int.Parse(cutFont[1]));
+                    }
+                }
+                else
+                {
+                    changeFont = false;
+                }
+            }
             if (addNew)
             {
                 for (int oo = 0; oo < this.Controls.Count; oo++)
@@ -112,7 +136,7 @@ namespace Training_Tools
                 addNew = !addNew;
             }
 
-            if(pnExcerciseAction.Controls.Count == 0)
+            if (pnExcerciseAction.Controls.Count == 0)
             {
                 btnPlay.Enabled = false;
             }
@@ -241,6 +265,15 @@ namespace Training_Tools
             if (!File.Exists("Item"))
             {
                 File.Create("Item");
+            }
+
+            if (!File.Exists("Font"))
+            {
+                File.Create("Font").Close();
+
+                StreamWriter sw = new StreamWriter("Font");
+                sw.Write("Arial;9");
+                sw.Close();
             }
 
             CreateNewItems();
@@ -421,6 +454,17 @@ namespace Training_Tools
             Label label = new Label();
             label.Text = listItems[counter];
             label.BackColor = Color.Transparent;
+
+            StreamReader sr = new StreamReader("Font");
+            string font = sr.ReadLine();
+            sr.Close();
+            string[] cutFont = font.Split(';');
+
+            label.Font = new Font(cutFont[0], int.Parse(cutFont[1]));
+            label.Width = 400 + int.Parse(cutFont[1]);
+            label.Height = 200+ int.Parse(cutFont[1]);
+            label.Anchor = (AnchorStyles.Bottom| AnchorStyles.Top | AnchorStyles.Right | AnchorStyles.Left);
+
             pb.Controls.Add(label);
 
             //label for Delete
@@ -617,6 +661,12 @@ namespace Training_Tools
                 pbX = 0;
                 pbY = 0;
             }
+        }
+
+        private void formatoYTamañoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFont fontoption = new frmFont();
+            fontoption.Show();
         }
     }
 }
