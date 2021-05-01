@@ -281,7 +281,7 @@ namespace Training_Tools
 
         public void CreateNewItems()
         {
-            StreamReader sr = new StreamReader("item");
+            StreamReader sr = new StreamReader("Item");
             string list = sr.ReadLine();
             sr.Close();
 
@@ -396,10 +396,10 @@ namespace Training_Tools
                     MessageBox.Show("En este momento no puede añadirse ningun ejercicio mas.\nPulse el boton reiniciar para añadir mas.");
                 }
             }
-            else if (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X ||
-                    lb.Location.X + lb.Width > pbTrash.Location.X && lb.Location.X + lb.Width < pbTrash.Width + pbTrash.Location.X
+            else if (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X
                     && lb.Location.Y > pbTrash.Location.Y && lb.Location.Y < pbTrash.Height + pbTrash.Location.Y ||
-                    lb.Location.Y + lb.Height > pbTrash.Location.Y && lb.Location.Y + lb.Height < pbTrash.Height + pbTrash.Location.Y)
+                    lb.Location.X + pbTrash.Width > pbTrash.Location.X && lb.Location.X + pbTrash.Width < pbTrash.Width + pbTrash.Location.X &&
+                    lb.Location.Y + pbTrash.Height > pbTrash.Location.Y && lb.Location.Y + pbTrash.Height < pbTrash.Height + pbTrash.Location.Y)
             {
                 if (lbTimePrincipal.Text == "00 : 00 : 00")
                 {
@@ -634,10 +634,10 @@ namespace Training_Tools
                 lb.BackColor = Color.Black;
                 lb.Location = new Point(MousePosition.X - this.Location.X - 40, MousePosition.Y - this.Location.Y - 50);
 
-                if (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X ||
-                    lb.Location.X + lb.Width > pbTrash.Location.X && lb.Location.X + lb.Width < pbTrash.Width + pbTrash.Location.X
+                if (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X
                     && lb.Location.Y > pbTrash.Location.Y && lb.Location.Y < pbTrash.Height + pbTrash.Location.Y ||
-                    lb.Location.Y + lb.Height > pbTrash.Location.Y && lb.Location.Y + lb.Height < pbTrash.Height + pbTrash.Location.Y)
+                    lb.Location.X + pbTrash.Width > pbTrash.Location.X && lb.Location.X + pbTrash.Width < pbTrash.Width + pbTrash.Location.X &&
+                    lb.Location.Y + pbTrash.Height > pbTrash.Location.Y && lb.Location.Y + pbTrash.Height < pbTrash.Height + pbTrash.Location.Y)
                 {
                     pbTrash.Image = Properties.Resources.trashSelected;
                     lb.Width = 55;

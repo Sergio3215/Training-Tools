@@ -99,7 +99,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include=".gitignore" />
     <None Include="Resources\trashSelected.png" />
     <None Include="Resources\trash.png" />
   </ItemGroup>
