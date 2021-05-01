@@ -102,5 +102,8 @@
     <None Include="Resources\trashSelected.png" />
     <None Include="Resources\trash.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pngtree-instagram-color-icon-png-image_557163.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

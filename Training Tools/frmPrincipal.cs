@@ -52,6 +52,8 @@ namespace Training_Tools
                 minute = 0;
                 lbTimePrincipal.Text = "00 : 00 : 00";
 
+                txtCycle.Enabled = true;
+
                 Restart();
 
                 for (int jj = 0; jj < pnExcerciseAction.Controls.Count; jj++)
@@ -117,19 +119,7 @@ namespace Training_Tools
             }
             if (addNew)
             {
-                for (int oo = 0; oo < this.Controls.Count; oo++)
-                {
-                    if (this.Controls[oo].Text != "")
-                    {
-                        this.Controls.RemoveAt(oo);
-                        oo--;
-                    }
-                    else
-                    {
-                        break;
-                    }
-                }
-
+                pnExcercise.Controls.Clear();
                 lstExcercise.Items.Clear();
 
                 CreateNewItems();
@@ -201,6 +191,7 @@ namespace Training_Tools
                         {
                             pnExcerciseAction.Controls[jj].Controls[0].Controls[1].Enabled = false;
                             pnExcerciseAction.Controls[jj].Controls[0].Controls[2].Enabled = false;
+                            txtCycle.Enabled = false;
                         }
                         minCounter += int.Parse(pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[1].Text);
                         secCounter += int.Parse(pnExcerciseAction.Controls[timeCounter].Controls[0].Controls[2].Text);
@@ -264,7 +255,7 @@ namespace Training_Tools
         {
             if (!File.Exists("Item"))
             {
-                File.Create("Item");
+                File.Create("Item").Close();
             }
 
             if (!File.Exists("Font"))
@@ -305,14 +296,23 @@ namespace Training_Tools
                 lb.Width = 100;
                 lb.Height = 30;
                 lb.BackColor = Color.Blue;
-                lb.Location = new Point(pbExcercise.Location.X + 50, height + pbExcercise.Location.Y);
+                lb.Location = new Point(50, height);
                 lb.MouseDown += pb_mouseDown;
                 lb.MouseMove += pb_mouseMove;
                 lb.MouseUp += pb_mouseUp;
-                this.Controls.Add(lb);
+                pnExcercise.Controls.Add(lb);
                 lb.Anchor = (AnchorStyles.Top | AnchorStyles.Right);
                 lb.BringToFront();
                 height += 35;
+
+                if(height > pnExcercise.Height)
+                {
+                    pnExcercise.AutoScroll = true;
+                }
+                else
+                {
+                    pnExcercise.AutoScroll = false;
+                }
             }
 
             //var control = this.Controls;
@@ -328,6 +328,7 @@ namespace Training_Tools
         {
             move = true;
             lb = (Label)sender;
+            this.Controls.Add(lb);
             pbX = lb.Location.X;
             pbY = lb.Location.Y;
             lbText = lb.Text;
@@ -343,10 +344,29 @@ namespace Training_Tools
             move = false;
             pbTrash.Visible = false;
             Label lb = (Label)sender;
-            if (lb.Location.X > pnExcerciseAction.Location.X && lb.Location.X < pnExcerciseAction.Location.X + pnExcerciseAction.Width &&
-                lb.Location.Y > pnExcerciseAction.Location.Y && lb.Location.Y < pnExcerciseAction.Location.Y + pnExcerciseAction.Height)
+            pnExcercise.Controls.Add(lb);
+            lb.BringToFront();
+
+            bool paramAddNew = (lb.Location.X > pnExcerciseAction.Location.X && lb.Location.X < pnExcerciseAction.Location.X + pnExcerciseAction.Width &&
+                lb.Location.Y > pnExcerciseAction.Location.Y && lb.Location.Y < pnExcerciseAction.Location.Y + pnExcerciseAction.Height);
+
+            bool timeZero = (lbTimePrincipal.Text == "00 : 00 : 00");
+
+            bool itemtrash = (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X
+                    && lb.Location.Y > pbTrash.Location.Y && lb.Location.Y < pbTrash.Height + pbTrash.Location.Y ||
+                    lb.Location.X + pbTrash.Width > pbTrash.Location.X && lb.Location.X + pbTrash.Width < pbTrash.Width + pbTrash.Location.X &&
+                    lb.Location.Y + pbTrash.Height > pbTrash.Location.Y && lb.Location.Y + pbTrash.Height < pbTrash.Height + pbTrash.Location.Y);
+
+            lb.Width = 100;
+            lb.Height = 30;
+            lb.Location = new Point(50, pbY);
+            lb.BackColor = Color.Blue;
+
+
+
+            if (paramAddNew)
             {
-                if (lbTimePrincipal.Text == "00 : 00 : 00")
+                if (timeZero)
                 {
                     try
                     {
@@ -363,6 +383,8 @@ namespace Training_Tools
 
                         //MessageBox.Show(listItems[0]);
                         CreateComponentExcercise(0, "", "");
+                        lb.Location = new Point(50, pbY);
+                        lb.BackColor = Color.Blue;
                     }
                     else
                     {
@@ -374,7 +396,7 @@ namespace Training_Tools
                         listItems.Add(lb.Text);
                         for (int ii = 0; ii < listItems.Count; ii++)
                         {
-                            if (ii + 1 > list.Count && ii < 10)
+                            if (ii + 1 > list.Count && ii < 9)
                             {
                                 CreateComponentExcercise(ii, "", "");
                             }
@@ -389,6 +411,8 @@ namespace Training_Tools
                             pnExcerciseAction.AutoScroll = false;
                         }
                         ActionY = 5;
+                        lb.Location = new Point(50, pbY);
+                        lb.BackColor = Color.Blue;
                     }
                 }
                 else
@@ -396,12 +420,9 @@ namespace Training_Tools
                     MessageBox.Show("En este momento no puede añadirse ningun ejercicio mas.\nPulse el boton reiniciar para añadir mas.");
                 }
             }
-            else if (lb.Location.X > pbTrash.Location.X && lb.Location.X < pbTrash.Width + pbTrash.Location.X
-                    && lb.Location.Y > pbTrash.Location.Y && lb.Location.Y < pbTrash.Height + pbTrash.Location.Y ||
-                    lb.Location.X + pbTrash.Width > pbTrash.Location.X && lb.Location.X + pbTrash.Width < pbTrash.Width + pbTrash.Location.X &&
-                    lb.Location.Y + pbTrash.Height > pbTrash.Location.Y && lb.Location.Y + pbTrash.Height < pbTrash.Height + pbTrash.Location.Y)
+            else if (itemtrash)
             {
-                if (lbTimePrincipal.Text == "00 : 00 : 00")
+                if (timeZero)
                 {
                     pbTrash.Image = Properties.Resources.trash;
                     StreamWriter sw = new StreamWriter("item");
@@ -426,6 +447,8 @@ namespace Training_Tools
                         }
                     }
                     addNew = true;
+                    lb.Location = new Point(50, pbY);
+                    lb.BackColor = Color.Blue;
                 }
                 else
                 {
@@ -577,10 +600,13 @@ namespace Training_Tools
                 List<string> min = new List<string>();
                 List<string> sec = new List<string>();
 
+                listItems.Clear();
+
                 for (int kk = 0; kk < pnExcerciseAction.Controls.Count; kk++)
                 {
                     min.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[1].Text);
                     sec.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[2].Text);
+                    listItems.Add(pnExcerciseAction.Controls[kk].Controls[0].Controls[0].Text);
                 }
 
                 if (min.Count == 1)
@@ -599,6 +625,7 @@ namespace Training_Tools
                     listItems.Clear();
                 else
                     listItems.RemoveAt(indexdelete);
+
                 pnExcerciseAction.Controls.Clear();
                 for (int ii = 0; ii < listItems.Count; ii++)
                 {
@@ -667,6 +694,15 @@ namespace Training_Tools
         {
             frmFont fontoption = new frmFont();
             fontoption.Show();
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("https://www.instagram.com/principiante_en_programar/");
+        }
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            System.Diagnostics.Process.Start("http://www.principianteenprogramar.com");
         }
     }
 }

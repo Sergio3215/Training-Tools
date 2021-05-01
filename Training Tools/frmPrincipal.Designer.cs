@@ -41,18 +41,22 @@ namespace Training_Tools
             this.label2 = new System.Windows.Forms.Label();
             this.lbMouseX = new System.Windows.Forms.Label();
             this.lbMouseY = new System.Windows.Forms.Label();
-            this.pbExcercise = new System.Windows.Forms.PictureBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtCycle = new System.Windows.Forms.TextBox();
-            this.pbTrash = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.herramientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatoYTamañoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).BeginInit();
+            this.pnExcercise = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pbTrash = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
             this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).BeginInit();
             this.SuspendLayout();
             // 
             // pnExcerciseAction
@@ -64,7 +68,7 @@ namespace Training_Tools
             this.pnExcerciseAction.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.pnExcerciseAction.Location = new System.Drawing.Point(12, 111);
             this.pnExcerciseAction.Name = "pnExcerciseAction";
-            this.pnExcerciseAction.Size = new System.Drawing.Size(737, 493);
+            this.pnExcerciseAction.Size = new System.Drawing.Size(737, 465);
             this.pnExcerciseAction.TabIndex = 0;
             this.pnExcerciseAction.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
@@ -73,7 +77,7 @@ namespace Training_Tools
             this.lstExcercise.FormattingEnabled = true;
             this.lstExcercise.Location = new System.Drawing.Point(498, 147);
             this.lstExcercise.Name = "lstExcercise";
-            this.lstExcercise.Size = new System.Drawing.Size(240, 446);
+            this.lstExcercise.Size = new System.Drawing.Size(240, 355);
             this.lstExcercise.TabIndex = 0;
             this.lstExcercise.Visible = false;
             // 
@@ -179,18 +183,6 @@ namespace Training_Tools
             this.lbMouseY.Visible = false;
             this.lbMouseY.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
-            // pbExcercise
-            // 
-            this.pbExcercise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.pbExcercise.BackColor = System.Drawing.Color.White;
-            this.pbExcercise.Location = new System.Drawing.Point(755, 111);
-            this.pbExcercise.Name = "pbExcercise";
-            this.pbExcercise.Size = new System.Drawing.Size(232, 493);
-            this.pbExcercise.TabIndex = 7;
-            this.pbExcercise.TabStop = false;
-            this.pbExcercise.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -232,17 +224,6 @@ namespace Training_Tools
             this.txtCycle.TabIndex = 11;
             this.txtCycle.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtBox_KeyPress);
             // 
-            // pbTrash
-            // 
-            this.pbTrash.Image = global::Training_Tools.Properties.Resources.trash;
-            this.pbTrash.Location = new System.Drawing.Point(758, 79);
-            this.pbTrash.Name = "pbTrash";
-            this.pbTrash.Size = new System.Drawing.Size(33, 29);
-            this.pbTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbTrash.TabIndex = 12;
-            this.pbTrash.TabStop = false;
-            this.pbTrash.Visible = false;
-            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -264,22 +245,91 @@ namespace Training_Tools
             // formatoYTamañoToolStripMenuItem
             // 
             this.formatoYTamañoToolStripMenuItem.Name = "formatoYTamañoToolStripMenuItem";
-            this.formatoYTamañoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.formatoYTamañoToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
             this.formatoYTamañoToolStripMenuItem.Text = "Fuentes y tamaños";
             this.formatoYTamañoToolStripMenuItem.Click += new System.EventHandler(this.formatoYTamañoToolStripMenuItem_Click);
+            // 
+            // pnExcercise
+            // 
+            this.pnExcercise.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnExcercise.BackColor = System.Drawing.Color.White;
+            this.pnExcercise.Location = new System.Drawing.Point(758, 111);
+            this.pnExcercise.Name = "pnExcercise";
+            this.pnExcercise.Size = new System.Drawing.Size(232, 502);
+            this.pnExcercise.TabIndex = 14;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Training_Tools.Properties.Resources.pngtree_instagram_color_icon_png_image_557163;
+            this.pictureBox1.Location = new System.Drawing.Point(124, 576);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pbTrash
+            // 
+            this.pbTrash.Image = global::Training_Tools.Properties.Resources.trash;
+            this.pbTrash.Location = new System.Drawing.Point(758, 79);
+            this.pbTrash.Name = "pbTrash";
+            this.pbTrash.Size = new System.Drawing.Size(33, 29);
+            this.pbTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbTrash.TabIndex = 12;
+            this.pbTrash.TabStop = false;
+            this.pbTrash.Visible = false;
+            // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.Location = new System.Drawing.Point(149, 579);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(226, 18);
+            this.linkLabel1.TabIndex = 16;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "@principiante_en_programar";
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(9, 579);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(91, 18);
+            this.label6.TabIndex = 17;
+            this.label6.Text = "Hecho por:";
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel2.Location = new System.Drawing.Point(663, 579);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(75, 18);
+            this.linkLabel2.TabIndex = 16;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "Web Site";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 616);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.linkLabel2);
+            this.Controls.Add(this.linkLabel1);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pnExcercise);
             this.Controls.Add(this.pbTrash);
             this.Controls.Add(this.txtCycle);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pnExcerciseAction);
-            this.Controls.Add(this.pbExcercise);
             this.Controls.Add(this.lbMouseY);
             this.Controls.Add(this.lbMouseX);
             this.Controls.Add(this.label2);
@@ -295,10 +345,10 @@ namespace Training_Tools
             this.Text = "Training Tool";
             this.Load += new System.EventHandler(this.frmPrincipal_Load);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
-            ((System.ComponentModel.ISupportInitialize)(this.pbExcercise)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -316,7 +366,6 @@ namespace Training_Tools
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lbMouseX;
         private System.Windows.Forms.Label lbMouseY;
-        private System.Windows.Forms.PictureBox pbExcercise;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -325,6 +374,11 @@ namespace Training_Tools
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem herramientaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem formatoYTamañoToolStripMenuItem;
+        private System.Windows.Forms.Panel pnExcercise;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.LinkLabel linkLabel2;
     }
 }
 
