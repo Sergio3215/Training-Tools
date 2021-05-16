@@ -32,7 +32,8 @@ namespace Training_Tools
         }
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            RestartCycle();
+            if(lbTimePrincipal.Text != "00 : 00 : 00")
+                RestartCycle();
         }
 
         public void Restart()
@@ -253,6 +254,7 @@ namespace Training_Tools
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = new Size(1015, 655);
             if (!File.Exists("Item"))
             {
                 File.Create("Item").Close();

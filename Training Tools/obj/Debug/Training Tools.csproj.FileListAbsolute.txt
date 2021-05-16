@@ -9,3 +9,4 @@ C:\Users\fox_3\source\repos\Training Tools\Training Tools\obj\Debug\Training Too
 C:\Users\fox_3\source\repos\Training Tools\Training Tools\obj\Debug\Training Tools.csproj.CoreCompileInputs.cache
 C:\Users\fox_3\source\repos\Training Tools\Training Tools\obj\Debug\Training Tools.exe
 C:\Users\fox_3\source\repos\Training Tools\Training Tools\obj\Debug\Training Tools.pdb
+C:\Users\fox_3\Source\Repos\Training Tools\Training Tools\obj\Debug\Training Tools.csproj.AssemblyReference.cache
