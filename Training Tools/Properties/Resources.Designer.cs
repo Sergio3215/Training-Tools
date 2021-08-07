@@ -63,9 +63,39 @@ namespace Training_Tools.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap play_icon_134504 {
+            get {
+                object obj = ResourceManager.GetObject("play_icon_134504", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pngtree_instagram_color_icon_png_image_557163 {
             get {
                 object obj = ResourceManager.GetObject("pngtree-instagram-color-icon-png-image_557163", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pngwing_com {
+            get {
+                object obj = ResourceManager.GetObject("pngwing.com", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap reload_icon_16912 {
+            get {
+                object obj = ResourceManager.GetObject("reload-icon-16912", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

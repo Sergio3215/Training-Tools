@@ -36,11 +36,6 @@ namespace Training_Tools
             this.lbTimePrincipal = new System.Windows.Forms.Label();
             this.btnPlay = new System.Windows.Forms.Button();
             this.timerPrincipal = new System.Windows.Forms.Timer(this.components);
-            this.btnRestart = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lbMouseX = new System.Windows.Forms.Label();
-            this.lbMouseY = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -49,12 +44,19 @@ namespace Training_Tools
             this.herramientaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.formatoYTamañoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pnExcercise = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.pbTrash = new System.Windows.Forms.PictureBox();
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.label6 = new System.Windows.Forms.Label();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.btnShowLight = new System.Windows.Forms.Button();
+            this.pnCreator = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.txtSeaching = new System.Windows.Forms.TextBox();
+            this.btnClearAll = new System.Windows.Forms.Button();
+            this.btnClearText = new System.Windows.Forms.Button();
+            this.pbTrash = new System.Windows.Forms.PictureBox();
+            this.btnRestart = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
+            this.pnCreator.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).BeginInit();
             this.SuspendLayout();
@@ -85,9 +87,9 @@ namespace Training_Tools
             // 
             this.btnAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnAdd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(755, 34);
+            this.btnAdd.Location = new System.Drawing.Point(889, 79);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(232, 42);
+            this.btnAdd.Size = new System.Drawing.Size(55, 31);
             this.btnAdd.TabIndex = 0;
             this.btnAdd.Text = "Añadir";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -98,7 +100,7 @@ namespace Training_Tools
             // 
             this.lbTimePrincipal.AutoSize = true;
             this.lbTimePrincipal.Font = new System.Drawing.Font("Segoe UI", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTimePrincipal.Location = new System.Drawing.Point(227, 20);
+            this.lbTimePrincipal.Location = new System.Drawing.Point(243, 27);
             this.lbTimePrincipal.Name = "lbTimePrincipal";
             this.lbTimePrincipal.Size = new System.Drawing.Size(198, 50);
             this.lbTimePrincipal.TabIndex = 1;
@@ -107,12 +109,13 @@ namespace Training_Tools
             // 
             // btnPlay
             // 
+            this.btnPlay.BackgroundImage = global::Training_Tools.Properties.Resources.play_icon_134504;
+            this.btnPlay.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btnPlay.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPlay.Location = new System.Drawing.Point(528, 34);
+            this.btnPlay.Location = new System.Drawing.Point(316, 78);
             this.btnPlay.Name = "btnPlay";
-            this.btnPlay.Size = new System.Drawing.Size(97, 33);
+            this.btnPlay.Size = new System.Drawing.Size(35, 28);
             this.btnPlay.TabIndex = 2;
-            this.btnPlay.Text = "Play";
             this.btnPlay.UseVisualStyleBackColor = true;
             this.btnPlay.Click += new System.EventHandler(this.btnPlay_Click);
             this.btnPlay.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
@@ -122,66 +125,6 @@ namespace Training_Tools
             this.timerPrincipal.Enabled = true;
             this.timerPrincipal.Interval = 10;
             this.timerPrincipal.Tick += new System.EventHandler(this.timerPrincipal_Tick);
-            // 
-            // btnRestart
-            // 
-            this.btnRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestart.Location = new System.Drawing.Point(631, 34);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(97, 33);
-            this.btnRestart.TabIndex = 2;
-            this.btnRestart.Text = "Reiniciar";
-            this.btnRestart.UseVisualStyleBackColor = true;
-            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
-            this.btnRestart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 40);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(27, 25);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "X:";
-            this.label1.Visible = false;
-            this.label1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(78, 40);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 25);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Y:";
-            this.label2.Visible = false;
-            this.label2.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
-            // 
-            // lbMouseX
-            // 
-            this.lbMouseX.AutoSize = true;
-            this.lbMouseX.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMouseX.Location = new System.Drawing.Point(45, 46);
-            this.lbMouseX.Name = "lbMouseX";
-            this.lbMouseX.Size = new System.Drawing.Size(15, 17);
-            this.lbMouseX.TabIndex = 5;
-            this.lbMouseX.Text = "0";
-            this.lbMouseX.Visible = false;
-            this.lbMouseX.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
-            // 
-            // lbMouseY
-            // 
-            this.lbMouseY.AutoSize = true;
-            this.lbMouseY.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMouseY.Location = new System.Drawing.Point(111, 46);
-            this.lbMouseY.Name = "lbMouseY";
-            this.lbMouseY.Size = new System.Drawing.Size(15, 17);
-            this.lbMouseY.TabIndex = 6;
-            this.lbMouseY.Text = "0";
-            this.lbMouseY.Visible = false;
-            this.lbMouseY.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             // 
             // label3
             // 
@@ -259,34 +202,12 @@ namespace Training_Tools
             this.pnExcercise.Size = new System.Drawing.Size(232, 502);
             this.pnExcercise.TabIndex = 14;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = global::Training_Tools.Properties.Resources.pngtree_instagram_color_icon_png_image_557163;
-            this.pictureBox1.Location = new System.Drawing.Point(124, 576);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(30, 28);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
-            // pbTrash
-            // 
-            this.pbTrash.Image = global::Training_Tools.Properties.Resources.trash;
-            this.pbTrash.Location = new System.Drawing.Point(758, 79);
-            this.pbTrash.Name = "pbTrash";
-            this.pbTrash.Size = new System.Drawing.Size(33, 29);
-            this.pbTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbTrash.TabIndex = 12;
-            this.pbTrash.TabStop = false;
-            this.pbTrash.Visible = false;
-            // 
             // linkLabel1
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.Location = new System.Drawing.Point(149, 579);
+            this.linkLabel1.Location = new System.Drawing.Point(154, 3);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(226, 18);
             this.linkLabel1.TabIndex = 16;
@@ -299,7 +220,7 @@ namespace Training_Tools
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(9, 579);
+            this.label6.Location = new System.Drawing.Point(14, 3);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(91, 18);
             this.label6.TabIndex = 17;
@@ -307,10 +228,10 @@ namespace Training_Tools
             // 
             // linkLabel2
             // 
-            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Font = new System.Drawing.Font("Arial", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel2.Location = new System.Drawing.Point(663, 579);
+            this.linkLabel2.Location = new System.Drawing.Point(672, 579);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(75, 18);
             this.linkLabel2.TabIndex = 16;
@@ -318,27 +239,114 @@ namespace Training_Tools
             this.linkLabel2.Text = "Web Site";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
+            // btnShowLight
+            // 
+            this.btnShowLight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnShowLight.Location = new System.Drawing.Point(413, 82);
+            this.btnShowLight.Name = "btnShowLight";
+            this.btnShowLight.Size = new System.Drawing.Size(92, 23);
+            this.btnShowLight.TabIndex = 2;
+            this.btnShowLight.Text = "Zoom Mode";
+            this.btnShowLight.UseVisualStyleBackColor = true;
+            this.btnShowLight.Click += new System.EventHandler(this.btnShowLight_Click);
+            this.btnShowLight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
+            // 
+            // pnCreator
+            // 
+            this.pnCreator.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pnCreator.Controls.Add(this.linkLabel1);
+            this.pnCreator.Controls.Add(this.label6);
+            this.pnCreator.Controls.Add(this.pictureBox1);
+            this.pnCreator.Location = new System.Drawing.Point(0, 576);
+            this.pnCreator.Name = "pnCreator";
+            this.pnCreator.Size = new System.Drawing.Size(668, 41);
+            this.pnCreator.TabIndex = 18;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Image = global::Training_Tools.Properties.Resources.pngtree_instagram_color_icon_png_image_557163;
+            this.pictureBox1.Location = new System.Drawing.Point(129, 0);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(30, 28);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
+            // 
+            // txtSeaching
+            // 
+            this.txtSeaching.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSeaching.Location = new System.Drawing.Point(758, 53);
+            this.txtSeaching.Name = "txtSeaching";
+            this.txtSeaching.Size = new System.Drawing.Size(198, 20);
+            this.txtSeaching.TabIndex = 19;
+            this.txtSeaching.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // btnClearAll
+            // 
+            this.btnClearAll.Location = new System.Drawing.Point(230, 81);
+            this.btnClearAll.Name = "btnClearAll";
+            this.btnClearAll.Size = new System.Drawing.Size(71, 24);
+            this.btnClearAll.TabIndex = 20;
+            this.btnClearAll.Text = "Borrar Todo";
+            this.btnClearAll.UseVisualStyleBackColor = true;
+            this.btnClearAll.Click += new System.EventHandler(this.btnClearAll_Click);
+            // 
+            // btnClearText
+            // 
+            this.btnClearText.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnClearText.Location = new System.Drawing.Point(956, 53);
+            this.btnClearText.Name = "btnClearText";
+            this.btnClearText.Size = new System.Drawing.Size(33, 20);
+            this.btnClearText.TabIndex = 20;
+            this.btnClearText.Text = "X";
+            this.btnClearText.UseVisualStyleBackColor = true;
+            this.btnClearText.Click += new System.EventHandler(this.btnClearText_Click);
+            // 
+            // pbTrash
+            // 
+            this.pbTrash.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.pbTrash.Image = global::Training_Tools.Properties.Resources.trash;
+            this.pbTrash.Location = new System.Drawing.Point(758, 79);
+            this.pbTrash.Name = "pbTrash";
+            this.pbTrash.Size = new System.Drawing.Size(33, 29);
+            this.pbTrash.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbTrash.TabIndex = 12;
+            this.pbTrash.TabStop = false;
+            this.pbTrash.Visible = false;
+            // 
+            // btnRestart
+            // 
+            this.btnRestart.BackgroundImage = global::Training_Tools.Properties.Resources.reload_icon_16912;
+            this.btnRestart.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btnRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestart.Location = new System.Drawing.Point(357, 78);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(31, 29);
+            this.btnRestart.TabIndex = 2;
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.btnRestart_Click);
+            this.btnRestart.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(999, 616);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.linkLabel2);
-            this.Controls.Add(this.linkLabel1);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnClearText);
+            this.Controls.Add(this.btnClearAll);
+            this.Controls.Add(this.txtSeaching);
+            this.Controls.Add(this.pnCreator);
             this.Controls.Add(this.pnExcercise);
             this.Controls.Add(this.pbTrash);
+            this.Controls.Add(this.linkLabel2);
             this.Controls.Add(this.txtCycle);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.pnExcerciseAction);
-            this.Controls.Add(this.lbMouseY);
-            this.Controls.Add(this.lbMouseX);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnRestart);
+            this.Controls.Add(this.btnShowLight);
             this.Controls.Add(this.btnPlay);
             this.Controls.Add(this.lbTimePrincipal);
             this.Controls.Add(this.btnAdd);
@@ -351,6 +359,8 @@ namespace Training_Tools
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.frmPrincipal_MouseMove);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
+            this.pnCreator.ResumeLayout(false);
+            this.pnCreator.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbTrash)).EndInit();
             this.ResumeLayout(false);
@@ -366,10 +376,6 @@ namespace Training_Tools
         private System.Windows.Forms.Button btnPlay;
         private System.Windows.Forms.Timer timerPrincipal;
         private System.Windows.Forms.Button btnRestart;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label lbMouseX;
-        private System.Windows.Forms.Label lbMouseY;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
@@ -383,6 +389,11 @@ namespace Training_Tools
         private System.Windows.Forms.LinkLabel linkLabel1;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.LinkLabel linkLabel2;
+        private System.Windows.Forms.Button btnShowLight;
+        private System.Windows.Forms.Panel pnCreator;
+        private System.Windows.Forms.TextBox txtSeaching;
+        private System.Windows.Forms.Button btnClearAll;
+        private System.Windows.Forms.Button btnClearText;
     }
 }
 
