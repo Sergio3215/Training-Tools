@@ -165,7 +165,7 @@ namespace Training_Tools
                     microsecond++;
                 }
 
-                if (second == 59)
+                if (second > 59)
                 {
                     second = 0;
                     minute++;
@@ -318,7 +318,10 @@ namespace Training_Tools
                 lb.Width = 100;
                 lb.Height = 30;
                 lb.BackColor = Color.Blue;
-                lb.Location = new Point(50, height);
+                if(ii >= 14)
+                    lb.Location = new Point(62, height);
+                else
+                    lb.Location = new Point(80, height);
                 lb.MouseDown += pb_mouseDown;
                 lb.MouseMove += pb_mouseMove;
                 lb.MouseUp += pb_mouseUp;
@@ -380,7 +383,7 @@ namespace Training_Tools
 
             lb.Width = 100;
             lb.Height = 30;
-            lb.Location = new Point(50, pbY);
+            lb.Location = new Point(pbX, pbY);
             lb.BackColor = Color.Blue;
 
 
