@@ -11,6 +11,8 @@ C:\Users\fox_3\Source\Repos\Training Tools\Training Tools\obj\Debug\Training Too
 C:\Users\fox_3\Source\Repos\Training Tools\Training Tools\obj\Debug\Training Tools.exe
 C:\Users\fox_3\Source\Repos\Training Tools\Training Tools\obj\Debug\Training Tools.pdb
 C:\Users\fox_3\Source\Repos\Training Tools\Training Tools\obj\Debug\Training Tools.csproj.AssemblyReference.cache
+=======
+>>>>>>> Stashed changes
 C:\Users\fox_3\source\repos\Sergio3215\Training-Tools\Training Tools\bin\Debug\Training Tools.exe.config
 C:\Users\fox_3\source\repos\Sergio3215\Training-Tools\Training Tools\bin\Debug\Training Tools.exe
 C:\Users\fox_3\source\repos\Sergio3215\Training-Tools\Training Tools\bin\Debug\Training Tools.pdb
