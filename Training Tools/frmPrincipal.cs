@@ -22,8 +22,6 @@ namespace Training_Tools
         }
         public void moveMouse(int X, int Y)
         {
-            lbMouseX.Text = MousePosition.X.ToString();
-            lbMouseY.Text = MousePosition.Y.ToString();
         }
 
         private void btnPlay_Click(object sender, EventArgs e)
@@ -32,7 +30,8 @@ namespace Training_Tools
         }
         private void btnRestart_Click(object sender, EventArgs e)
         {
-            RestartCycle();
+            if(lbTimePrincipal.Text != "00 : 00 : 00")
+                RestartCycle();
         }
 
         public void Restart()
@@ -95,6 +94,21 @@ namespace Training_Tools
         public static bool changeFont = false;
         private void timerPrincipal_Tick(object sender, EventArgs e)
         {
+
+            bool txtEmpty = false;
+            if (!String.IsNullOrEmpty(txtSeaching.Text))
+            {
+                txtEmpty = true;
+            }
+            btnClearText.Visible = txtEmpty;
+
+            bool clearAll = false;
+            if(pnExcerciseAction.Controls.Count > 0)
+            {
+                clearAll = true;
+            }
+            btnClearAll.Visible = clearAll;
+
             if (enableForm)
             {
                 this.Enabled = true;
@@ -151,7 +165,7 @@ namespace Training_Tools
                     microsecond++;
                 }
 
-                if (second == 59)
+                if (second > 59)
                 {
                     second = 0;
                     minute++;
@@ -172,7 +186,8 @@ namespace Training_Tools
 
                 lbTimePrincipal.Text = $"{ceroMin}{minute} : {ceroSec}{second} : {ceroMicroSec}{microsecond}";
 
-                btnPlay.Text = "Stop";
+                //btnPlay.Text = "Stop";
+                btnPlay.BackgroundImage = Properties.Resources.pngwing_com;
                 btnRestart.Enabled = false;
 
                 if (timeCounter < pnExcerciseAction.Controls.Count)
@@ -246,13 +261,15 @@ namespace Training_Tools
             }
             else
             {
-                btnPlay.Text = "Play";
+                btnPlay.BackgroundImage = Properties.Resources.play_icon_134504;
+                //btnPlay.Text = "Play";
                 btnRestart.Enabled = true;
             }
         }
 
         private void frmPrincipal_Load(object sender, EventArgs e)
         {
+            this.MinimumSize = new Size(1015, 655);
             if (!File.Exists("Item"))
             {
                 File.Create("Item").Close();
@@ -286,17 +303,25 @@ namespace Training_Tools
                         lstExcercise.Items.Add(listCut[ll]);
                 }
             }
+            createItemList(lstExcercise);
+            //var control = this.Controls;
+        }
 
+        public void createItemList(ListBox lstExcercises)
+        {
             int height = 15;
-            for (int ii = 0; ii < lstExcercise.Items.Count; ii++)
+            for (int ii = 0; ii < lstExcercises.Items.Count; ii++)
             {
                 Label lb = new Label();
-                lb.Text = lstExcercise.Items[ii].ToString();
+                lb.Text = lstExcercises.Items[ii].ToString();
                 lb.ForeColor = Color.White;
                 lb.Width = 100;
                 lb.Height = 30;
                 lb.BackColor = Color.Blue;
-                lb.Location = new Point(50, height);
+                if(ii >= 14)
+                    lb.Location = new Point(62, height);
+                else
+                    lb.Location = new Point(80, height);
                 lb.MouseDown += pb_mouseDown;
                 lb.MouseMove += pb_mouseMove;
                 lb.MouseUp += pb_mouseUp;
@@ -305,7 +330,7 @@ namespace Training_Tools
                 lb.BringToFront();
                 height += 35;
 
-                if(height > pnExcercise.Height)
+                if (height > pnExcercise.Height)
                 {
                     pnExcercise.AutoScroll = true;
                 }
@@ -314,9 +339,8 @@ namespace Training_Tools
                     pnExcercise.AutoScroll = false;
                 }
             }
-
-            //var control = this.Controls;
         }
+
 
         bool move = false;
         int pbX = 0;
@@ -359,7 +383,7 @@ namespace Training_Tools
 
             lb.Width = 100;
             lb.Height = 30;
-            lb.Location = new Point(50, pbY);
+            lb.Location = new Point(pbX, pbY);
             lb.BackColor = Color.Blue;
 
 
@@ -703,6 +727,103 @@ namespace Training_Tools
         private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             System.Diagnostics.Process.Start("http://www.principianteenprogramar.com");
+        }
+
+        public static frmPrincipal from;
+        public static Point pointSeg;
+
+        private void btnShowLight_Click(object sender, EventArgs e)
+        {
+            frmActive frm = new frmActive();
+
+            from = this;
+
+            for (int ii = 0; ii < this.Controls.Count; ii++)
+            {
+                if (this.Controls[ii].Name == "pnExcerciseAction")
+                {
+                    frm.Size = new Size(this.Controls[ii].Width, this.Controls[ii].Height);
+                    break;
+                }
+            }
+            for (int qq = 0; qq < this.Controls.Count; qq++)
+            {
+                if(this.Controls[qq].Name == "lbTimePrincipal" || this.Controls[qq].Name == "btnPlay" || 
+                    this.Controls[qq].Name == "btnRestart" || this.Controls[qq].Name == "pnExcerciseAction" || 
+                    this.Controls[qq].Name == "label5" || this.Controls[qq].Name == "txtCycle" || 
+                    this.Controls[qq].Name == "label4" || this.Controls[qq].Name == "label3")
+                {
+                    if(this.Controls[qq].Name == "label4")
+                    {
+                        pointSeg = new Point(label4.Location.X, label4.Location.Y);
+                    }
+
+                    frm.Controls.Add(this.Controls[qq]);
+                    qq--;
+                }
+            }
+
+            frm.Show();
+        }
+
+        public void SeackItem()
+        {
+            lstExcercise.Items.Clear();
+            pnExcercise.Controls.Clear();
+            CreateNewItems();
+
+            if (!String.IsNullOrEmpty(txtSeaching.Text))
+            {
+                lstExcercise.Items.Clear();
+                foreach(var control in pnExcercise.Controls)
+                {
+                    Label lb = (Label)control;
+                    //MessageBox.Show(lb.Text);
+                    try
+                    {
+                        string seach = lb.Text.Substring(0, txtSeaching.TextLength);
+
+                        if (txtSeaching.Text.ToUpper() == seach.ToUpper())
+                        {
+                            lstExcercise.Items.Add(lb.Text);
+                        }
+                    }
+                    catch
+                    {
+                        lb.Visible = false;
+                    }
+
+                }
+
+                pnExcercise.Controls.Clear();
+                createItemList(lstExcercise);
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            SeackItem();
+        }
+
+        private void btnClearAll_Click(object sender, EventArgs e)
+        {
+            if (lbTimePrincipal.Text == "00 : 00 : 00")
+            {
+                pnExcerciseAction.Controls.Clear();
+                heightAction = 50;
+                ActionY = 5;
+                listItems.Clear();
+            }
+            else
+            {
+                MessageBox.Show("No se puede borrar cuando esta ejecutandose el temporizador");
+            }
+        }
+
+        private void btnClearText_Click(object sender, EventArgs e)
+        {
+            txtSeaching.Text = "";
+            SeackItem();
         }
     }
 }
